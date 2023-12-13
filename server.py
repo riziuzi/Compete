@@ -1,8 +1,14 @@
+from flask import Flask, request, jsonify
 from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-uri = "mongodb+srv://riziuzi:<password>@riziuzicluster.ulcokkb.mongodb.net/?retryWrites=true&w=majority"
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi('1'))
+
+app = Flask(__name__)
+
+uri = "mongodb+srv://riziuzi:GClDGPPK1AZwCcEP@riziuzicluster.ulcokkb.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+
+# Print connection details
+print("Connected to:", uri)
+
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
