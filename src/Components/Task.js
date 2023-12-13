@@ -10,7 +10,7 @@ const Task = () => {
         successDuration: 2000,
     });
 
-    const startListening = () => SpeechRecognition.startListening({ continuous: true, language: 'en-IN' });
+    const startListening = () => SpeechRecognition.startListening({ continuous: true, language: 'en-UK' });
     const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
     const [isListening, setisListening] = useState(false);

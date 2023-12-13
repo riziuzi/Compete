@@ -1,32 +1,31 @@
 /* Disclaimer.css */
 
 .disclaimer-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .contact-info {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 15px;
-  }
-  
-  .contact-info a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
-  .contact-info a:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+.contact-info a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}

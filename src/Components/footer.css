@@ -1,11 +1,10 @@
 .footer--pin {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #333; /* Set a background color or other styling */
-    color: white; /* Set text color or other styling */
-    padding: 10px; /* Adjust padding as needed */
-    text-align: center; /* Center the text if needed */
-  }
-  
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 9999; /* Set a higher z-index */
+}

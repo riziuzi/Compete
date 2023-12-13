@@ -5,7 +5,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid ms-auto">
-          <a className="navbar-brand mr-4" href="">
+          <a className="navbar-brand mr-4" href="/">
             Compete
           </a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
