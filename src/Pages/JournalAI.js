@@ -6,9 +6,9 @@ import Footer from '../Components/Footer'
 export default function JournalAI() {
   return (
     <>
-        {/* <Navbar /> */}
+        <Navbar />
         <Task />
-        {/* <Footer /> */}
+        <Footer />
     </>
   )
 }
