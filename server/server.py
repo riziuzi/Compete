@@ -4,39 +4,13 @@ from pymongo.mongo_client import MongoClient
 from flask_cors import CORS  # Import the CORS extension
 from dotenv import load_dotenv
 import os
-import socket
+import server_utils
+import applications
 
 load_dotenv()
-
-def get_ip_address():
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
-        ip_address = s.getsockname()[0]
-        s.close()
-
-        return ip_address
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
-
-def updateEnv():
-    ip_address_str = str(get_ip_address())
-
-    # os.environ["HOST"] = ip_address_str
-    # os.environ["PORT"] = "8088"
-
-    with open(".env", "w") as env_file:
-        env_file.write(f"REACT_APP_HOST={ip_address_str}\n")
-        env_file.write("REACT_APP_PORT=8088\n")
-
-    print(f"HOST value updated to: {ip_address_str}")
-    print("PORT value updated to: 8088")
-    
-
 app = Flask(__name__)
 CORS(app)
-updateEnv()
+server_utils.updateEnv()
 
 uri = "mongodb+srv://riziuzi:GClDGPPK1AZwCcEP@riziuzicluster.ulcokkb.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
@@ -59,9 +33,13 @@ def submit_task():
         print(data)
         usr_name = "rishiSIR"                                   # ??????????????????????????
         task_collection = db[f"{usr_name}_collection"]
-        
-
+        answer = applications.QnA(data["message"])
+        print(answer)                       # Heavy time consumer!!!!!!!!!!!!
+        # print(applications.QnA("Today, I spent 2 hours working on the project. I started by reviewing the project requirements and then moved on to creating a rough outline of the project. I also spent some time researching the best tools to use for the project. I ran into a few issues with the tools, but I was able to resolve them after some troubleshooting. Overall, I feel like I made good progress today and I’m looking forward to continuing to work on the project tomorrow."))
+        if(answer["task"]==""):
+            answer["task"] = "Unknown Task"
         task_document = {
+            "task": answer["task"],
             "message": data["message"],
             "date": datetime.datetime.now(),
         }
@@ -79,7 +57,7 @@ def submit_task():
 
 
 
-app.run(debug=True, host=os.getenv('HOST',"192.168.1.6"), port=os.getenv('PORT', 8055))
+app.run(debug=True, host=os.getenv('REACT_APP_HOST',"192.168.1.6"), port=os.getenv('REACT_APP_PORT', 8055))
 
 
 

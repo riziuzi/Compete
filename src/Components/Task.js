@@ -8,7 +8,7 @@ const Task = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const formData = {message : transcript}
-        fetch('http://192.168.1.7:5000/api/submit', {
+        fetch('http://192.168.1.6:8055/api/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Task = () => {
     };
 
     if (!browserSupportsSpeechRecognition) {
-        return null;
+        console.log("NOT Supported bhaag ja!!!! Chrome use kr chrome")
     }
 
     return (
