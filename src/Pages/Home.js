@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import CountDown from '../Components/CountDown/CountDown';
 
 const Home = () => {
   return (
@@ -42,6 +43,9 @@ const Home = () => {
           </li>
         </ul>
       </section>
+    </div>
+    <div>
+    <CountDown />
     </div>
     <Footer />  
     </div>
