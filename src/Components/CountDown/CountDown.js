@@ -4,25 +4,20 @@ import Timer from './Timer';
 import moment from 'moment';
 import getCountdownDate from './counter_utils/getCountdownDate'
 
-export default function CountDown() {
+export default function CountDown({event_dict}) {
   const initialCountdownSettings = {
     eventNameValue: '',
     dateValue: '',
     timeValue: '',
     ampmValue: 'am'
   };
-  
-  // const event_dict = { "eventNameValue": "Owow", "dateValue": "12-17-2023", "timeValue": "12:30", "ampmValue": "am", "unixEndDate": 1702753200, "eventName": "Owow" }
-  const event_dict = { "dateValue": "12-17-2023", "timeValue": "12:30", "ampmValue": "am", "eventName": "UPSC Mains" }
-  event_dict["unixEndDate"] = Number(moment(`${event_dict.dateValue} ${event_dict.timeValue} ${event_dict.ampmValue}`, 'MM-DD-YYYY hh:mm A').format('X'));
-  const [countdownSettings, setCountdownSettings] = useState({ ...event_dict });
+  // const [timerDict, settimerDict] = useState({...event_dict})
+  const [countdownSettings, setCountdownSettings] = useState({ ...event_dict, "unixEndDate": Number(moment(`${event_dict.dateValue} ${event_dict.timeValue} ${event_dict.ampmValue}`, 'MM-DD-YYYY hh:mm A').format('X')) });
   const [countdownTimer, setCountdownTimer] = useState(null);
   const [countdownInfoMessage, setCountdownInfoMessage] = useState('');
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  // useEffect(()=>{
-  //   console.log(countdownSettings)
-  // },[])
+
   useEffect(() => {
     if (!countdownSettings.unixEndDate) setCountdownInfoMessage('Click the Settings button to start a new countdown.');
 
@@ -54,6 +49,10 @@ export default function CountDown() {
   useEffect(() => {
     setCountdownSettings(getCountdownDate());
   }, [modalVisibility]);
+
+  // useEffect(()=>{
+  //   console.log(timerDict)
+  // },[])
 
   function playTimer(currentUnixEndDate) {
     const distance = currentUnixEndDate - moment().format('X');
@@ -94,11 +93,11 @@ export default function CountDown() {
   return (
     <>
       <header>
-        <h1 className="header-item">Countdown Timer</h1>
-        <div className="button-group header-item">
+        <h1 className="header-item">{countdownSettings.eventName} Countdown Timer</h1>
+        {/* <div className="button-group header-item">
           <button type="button" className="button header-button clear" onClick={() => clearCountdown()}>Clear</button>
           <button type="button" className="button header-button settings" onClick={() => setModalVisibility(true)}>Settings</button>
-        </div>
+        </div> */}
       </header>
       <div>
         {modalVisibility && <SettingsModal setModalVisibility={setModalVisibility} countdownSettings={countdownSettings} setCountdownSettings={setCountdownSettings} />}
