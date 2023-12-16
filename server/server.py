@@ -33,7 +33,7 @@ def submit_task():
         print(data)
         usr_name = "rishiSIR"                                   # ??????????????????????????
         task_collection = db[f"{usr_name}_collection"]
-        answer = applications.QnA(data["message"])
+        answer = applications.Summarize(data["message"])
         print(answer)                       # Heavy time consumer!!!!!!!!!!!!
         # print(applications.QnA("Today, I spent 2 hours working on the project. I started by reviewing the project requirements and then moved on to creating a rough outline of the project. I also spent some time researching the best tools to use for the project. I ran into a few issues with the tools, but I was able to resolve them after some troubleshooting. Overall, I feel like I made good progress today and I’m looking forward to continuing to work on the project tomorrow."))
         if(answer["task"]==""):
