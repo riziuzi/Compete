@@ -8,7 +8,8 @@ import Footer from '../Components/Footer';
 import CountDown from '../Components/CountDown/CountDown';
 
 const Home = () => {
-  const events_list = [{ "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" }]
+  const events_list = [{ "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" },
+  { "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" }]
   return (
     <div>
     <Navbar />
