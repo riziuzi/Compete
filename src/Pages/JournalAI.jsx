@@ -16,8 +16,6 @@ export default function JournalAI() {
     ).then(
       data => {
         setTasks(data)
-        console.log("RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN")
-        console.log(data)
       }
     ).catch((error) => console.error("Caught error:", error));
   }, [])

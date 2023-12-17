@@ -26,7 +26,6 @@ def get_data(user_id):
     return data
 
 @app.route("/api/submit",  methods=['POST'])
-# @app.route('/api/submit', methods=['POST'])
 def submit_task():
     try:
         data = request.json
@@ -53,7 +52,10 @@ def submit_task():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"error": "Internal Server Error"}), 500
-
+@app.route("/api/blogs/", methods=["GET"])
+def get_blogs():
+    print("HHIIIIIaaaaaaaa")            # delete
+    return [{"blog" : "Ye le nikaal photu |( ^  ^ )|"}]
 
 
 

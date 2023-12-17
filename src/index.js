@@ -5,6 +5,8 @@ import About from './Pages/About'
 import JournalAI from './Pages/JournalAI'
 import Disclaimer from './Pages/Disclaimer';
 import CountDown from './Components/CountDown/CountDown';
+import Resource from './Pages/Resource';
+import CreateContent from './Pages/CreateContent';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,11 +32,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/resource",
-    element: <div><Home /></div>,
+    element: <div><Resource /></div>,
   },
   {
     path: "/footer/disclaimer",
     element: <div><Disclaimer /></div>
+  },
+  {
+    path: "/resource/createcontent",
+    element: <div><CreateContent /></div>
   }
 ]);
 

@@ -21,7 +21,7 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="nav-item ml-1">
-                <a className="nav-link" href="/resources">
+                <a className="nav-link" href="/resource">
                   Resources
                 </a>
               </li>
