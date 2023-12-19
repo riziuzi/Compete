@@ -55,7 +55,7 @@ export default function Editor() {
 
   const fetchDataFromServer = () => {
     // Make an HTTP request to fetch initial data from the server
-    return fetch('http://192.168.1.6:8055/initial-data')
+    return fetch('https://compete-server.onrender.com/initial-data')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -96,7 +96,7 @@ export default function Editor() {
 
   const sendToServer = (data) => {
     // Make an HTTP request to your server
-    fetch('http://192.168.1.6:8055/api/save_notes', {
+    fetch('https://compete-server.onrender.com/api/save_notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ export default function Blog_card({data}) {
   return (
     <div>
       {keys_data.map((key,index)=>{
-        return (<>{key} : {data[key]}</>)
+        return (<div key={key}>{key} : {data[key]}</div>)
       })} 
     </div>
   )

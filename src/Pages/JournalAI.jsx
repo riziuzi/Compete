@@ -11,7 +11,7 @@ export default function JournalAI() {
   const [tasks, setTasks] = useState([])
   const userID = "rishiSIR"    // must be unique
   useEffect(() => {
-    fetch("http://192.168.1.6:8055/api/tasks/"+userID).then(
+    fetch("https://compete-server.onrender.com/api/tasks/"+userID).then(
       res => res.json()
     ).then(
       data => {

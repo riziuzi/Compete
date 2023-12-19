@@ -8,7 +8,7 @@ const Task = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const formData = {message : transcript}
-        fetch('http://192.168.1.6:8055/api/submit', {
+        fetch('https://compete-server.onrender.com/api/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

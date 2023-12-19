@@ -5,7 +5,7 @@ export default function Blog() {
   const [Blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.1.6:8055/api/blogs/")
+    fetch("https://compete-server.onrender.com/api/blogs/")
       .then(res => res.json())
       .then(data => setBlogs(data))
       .catch(error => console.error("Error fetching blogs:", error));
