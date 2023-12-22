@@ -26,6 +26,11 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="nav-item ml-1">
+                <a className="nav-link" href="/userauth">
+                  Login
+                </a>
+              </li>
+              <li className="nav-item ml-1">
                 <a className="nav-link" href="/about">
                   About
                 </a>

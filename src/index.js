@@ -7,6 +7,7 @@ import Disclaimer from './Pages/Disclaimer';
 import CountDown from './Components/CountDown/CountDown';
 import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
+import UserAuth from './Pages/UserAuth'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/resource/createcontent",
     element: <div><CreateContent /></div>
+  },
+  {
+    path : "/userauth",
+    element : <div><UserAuth /></div>
   }
 ]);
 
