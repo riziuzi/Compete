@@ -2,7 +2,7 @@ import React from "react";
 function SignUpForm() {
   const [state, setState] = React.useState({
     name: "",
-    email: "",
+    username: "",
     password: "",
     password2 :""
   });
@@ -17,7 +17,7 @@ function SignUpForm() {
   const handleOnSubmit = evt => {
     evt.preventDefault();
 
-    const { name, email, password, password2 } = state;
+    const { name, username, password, password2 } = state;
     let error = ""
     
     for (let key in state) {
@@ -25,23 +25,23 @@ function SignUpForm() {
         error = `${key} should be filled!`
         break
       }
-      else if((key==="password") && (state[key].length < 8))
-      {
-        console.log((key))
-        error = "Password length should be >= 8"
-      }
-      else if((key==="password2") && (state[key].length < 8))
-      {
-        console.log((key))
-        error = "Password length should be >= 8"
-      }
+      // else if((key==="password") && (state[key].length < 8))
+      // {
+      //   console.log((key))
+      //   error = "Password length should be >= 8"
+      // }
+      // else if((key==="password2") && (state[key].length < 8))
+      // {
+      //   console.log((key))
+      //   error = "Password length should be >= 8"
+      // }
       else if(state["password2"]!==state["password"])
       {
         error = "Passwords do not match"
       }
     }
     if (error.length === 0) {
-      fetch("http://localhost:3001/auth/register", {
+      fetch("http://localhost:3001/register", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -90,8 +90,8 @@ function SignUpForm() {
         />
         <input
           type="email"
-          name="email"
-          value={state.email}
+          name="username"
+          value={state.username}
           onChange={handleChange}
           placeholder="Email"
         />

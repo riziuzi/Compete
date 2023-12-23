@@ -1,7 +1,7 @@
 import React from "react";
 function SignInForm() {
   const [state, setState] = React.useState({
-    email: "",
+    username: "",
     password: ""
   });
   const handleChange = evt => {
@@ -12,22 +12,44 @@ function SignInForm() {
     });
   };
 
+  const authButton = evt => {
+    fetch("http://localhost:3001/profile", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include credentials (cookies)
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.error(`Error occurred in fetching: ${err}`);
+    });
+};
+
   const handleOnSubmit = evt => {
     evt.preventDefault();
 
-    const { email, password } = state;
-    if(email.length===0 || password.length ===0)
-    {
+    const { username, password } = state;
+    if (username.length === 0 || password.length === 0) {
       alert("Fill all the blanks")
       return
     }
-    fetch("http://localhost:3001/auth/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(state)
-      })
+    fetch("http://localhost:3001/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(state)
+    })
       .then(res => console.log(res.json()))
       .catch(err => `Error occured in fetching: ${err}`)
 
@@ -58,8 +80,8 @@ function SignInForm() {
         <input
           type="email"
           placeholder="Email"
-          name="email"
-          value={state.email}
+          name="username"
+          value={state.username}
           onChange={handleChange}
         />
         <input
@@ -72,6 +94,8 @@ function SignInForm() {
         <a href="#">Forgot your password?</a>
         <button>Sign In</button>
       </form>
+      <button onClick={authButton}>Auth check</button>
+
     </div>
   );
 }
