@@ -1,4 +1,5 @@
 import React from "react";
+
 function SignInForm() {
   const [state, setState] = React.useState({
     username: "",
@@ -13,27 +14,29 @@ function SignInForm() {
   };
 
   const authButton = evt => {
-    fetch("http://localhost:3001/profile", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        credentials: 'include', // Include credentials (cookies)
+    const token = localStorage.getItem('token');
+    fetch("http://localhost:3001/protected", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization : token
+      },
+      credentials: 'include', // Include credentials (cookies)
     })
-    .then(res => {
+      .then(res => {
         if (res.ok) {
-            return res.json();
+          return res.json();
         } else {
-            throw new Error(`HTTP error! Status: ${res.status}`);
+          throw new Error(`HTTP error! Status: ${res.status}`);
         }
-    })
-    .then(data => {
+      })
+      .then(data => {
         console.log(data);
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.error(`Error occurred in fetching: ${err}`);
-    });
-};
+      });
+  };
 
   const handleOnSubmit = evt => {
     evt.preventDefault();
@@ -50,7 +53,11 @@ function SignInForm() {
       },
       body: JSON.stringify(state)
     })
-      .then(res => console.log(res.json()))
+      .then(res => res.json())          // note that res.json returns a promise, which should not be directly console.logged
+      .then((data) => {
+        console.log(data)
+        localStorage.setItem("token", data.token)
+      })
       .catch(err => `Error occured in fetching: ${err}`)
 
     // for (const key in state) {

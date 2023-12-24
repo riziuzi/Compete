@@ -8,6 +8,7 @@ import CountDown from './Components/CountDown/CountDown';
 import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
 import UserAuth from './Pages/UserAuth'
+import Profile from './Pages/Profile';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path : "/userauth",
     element : <div><UserAuth /></div>
+  },
+  {
+    path : "/profile",
+    element : <div><Profile /></div>
   }
 ]);
 
