@@ -1,5 +1,5 @@
 import React from 'react'
-import Editor2 from '../Components/Editor/Editor2'
+import Editor from '../Components/Editor/Editor'
 import Navbar from '../Components/Navbar'
 
 export default function CreateContent() {
@@ -7,8 +7,7 @@ export default function CreateContent() {
     <>
     <div><Navbar /></div>
         <div className="container">
-            <Editor2 />
-            {/* Helo */}
+            <Editor />
         </div>
     </>
   )
