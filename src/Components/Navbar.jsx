@@ -1,34 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import useAuthenticate from "./Hook/useAuthenticate"
 
 export default function Navbar() {
   const [handle, sethandle] = useState()
+  const { authenticated, loading, userObj } = useAuthenticate()
+  const renderNavItem = (text, link) => (
+    <li className="nav-item ml-1">
+      <a className="nav-link" href={link}>
+        {text}
+      </a>
+    </li>
+  );
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    fetch("http://localhost:3001/protected", {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token
-      },
-      credentials: 'include', // Include credentials (cookies)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-      })
-      .then(data => {
-        sethandle(data.user.username)
-      })
-      .catch(err => {
-        alert("Please authorize yourself from login page")
-        console.error(`Error occurred in fetching: ${err}`);
-      });
-
-  }, [])
   return (
     <div>
       <nav className="navbar navbar-expand bg-body-tertiary">
@@ -38,36 +21,14 @@ export default function Navbar() {
           </a>
           <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="/journalai">
-                  JournalAI
-                </a>
-              </li>
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="/resource">
-                  Resources
-                </a>
-              </li>
-              {(!handle) && (<li className="nav-item ml-1">
-                <a className="nav-link" href="/userauth">
-                  Login
-                </a>
-              </li>)}
-              {(handle) && (<li className="nav-item ml-1">
-                <a className="nav-link" href="/profile">
-                  {handle} profile
-                </a>
-              </li>)}
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="/about">
-                  About
-                </a>
-              </li>
+              {renderNavItem("Home", "/")}
+              {renderNavItem("JournalAI", "/JournalAI")}
+              {renderNavItem("Resources", "/resource")}
+              {loading ? renderNavItem('...Loading', '/profile') :
+                authenticated ? renderNavItem(userObj.username, '/profile') :
+                  renderNavItem('Login', '/userauth')
+              }
+              {renderNavItem("About", "/about")}
             </ul>
           </div>
         </div>

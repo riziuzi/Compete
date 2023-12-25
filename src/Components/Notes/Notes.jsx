@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorComponent from '../Editor/EditorComponent';
+import EditorReadOnly from '../Editor/EditorReadOnly';
 
 const Notes = () => {
   // Sample data (replace with your own data)
@@ -21,7 +21,7 @@ const Notes = () => {
   };
 
   return (
-    <div className="container"><EditorComponent data={editorData} /></div>
+    <div className="container"><EditorReadOnly data={editorData} /></div>
 
   );
 };

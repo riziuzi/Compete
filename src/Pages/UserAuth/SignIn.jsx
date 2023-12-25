@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     username: "",
     password: ""
   });
+
   const handleChange = evt => {
     const value = evt.target.value;
     setState({
@@ -13,39 +16,15 @@ function SignInForm() {
     });
   };
 
-  const authButton = evt => {
-    const token = localStorage.getItem('token');
-    fetch("http://localhost:3001/protected", {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization : token
-      },
-      credentials: 'include', // Include credentials (cookies)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(err => {
-        console.error(`Error occurred in fetching: ${err}`);
-      });
-  };
-
   const handleOnSubmit = evt => {
     evt.preventDefault();
 
     const { username, password } = state;
     if (username.length === 0 || password.length === 0) {
-      alert("Fill all the blanks")
-      return
+      alert("Fill all the blanks");
+      return;
     }
+
     fetch("http://localhost:3001/login", {
       method: 'POST',
       headers: {
@@ -53,19 +32,18 @@ function SignInForm() {
       },
       body: JSON.stringify(state)
     })
-      .then(res => res.json())          // note that res.json returns a promise, which should not be directly console.logged
+      .then(res => res.json())
       .then((data) => {
-        console.log(data)
-        localStorage.setItem("token", data.token)
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        // Replace the current entry in the history stack with the home page
+        navigate('/', { replace: true });
       })
-      .catch(err => `Error occured in fetching: ${err}`)
+      .catch(err => console.error(`Error occurred in fetching: ${err}`));
+  };
 
-    // for (const key in state) {
-    //   setState({
-    //     ...state,
-    //     [key]: ""
-    //   });
-    // }
+  const authButton = () => {
+    // Your authentication logic here
   };
 
   return (
@@ -102,7 +80,6 @@ function SignInForm() {
         <button>Sign In</button>
       </form>
       <button onClick={authButton}>Auth check</button>
-
     </div>
   );
 }

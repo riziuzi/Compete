@@ -59,4 +59,5 @@ export const EditorConfig = {
       }
     }
   },
+  data : templateData
 };

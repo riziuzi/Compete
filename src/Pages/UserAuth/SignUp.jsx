@@ -4,7 +4,7 @@ function SignUpForm() {
     name: "",
     username: "",
     password: "",
-    password2 :""
+    password2: ""
   });
   const handleChange = evt => {
     const value = evt.target.value;
@@ -19,7 +19,7 @@ function SignUpForm() {
 
     const { name, username, password, password2 } = state;
     let error = ""
-    
+
     for (let key in state) {
       if (state[key] === "") {
         error = `${key} should be filled!`
@@ -35,8 +35,7 @@ function SignUpForm() {
       //   console.log((key))
       //   error = "Password length should be >= 8"
       // }
-      else if(state["password2"]!==state["password"])
-      {
+      else if (state["password2"] !== state["password"]) {
         error = "Passwords do not match"
       }
     }
@@ -48,12 +47,26 @@ function SignUpForm() {
         },
         body: JSON.stringify(state)
       })
-      .then(res => console.log(res.json()))
-      .catch(err => `Error occured in fetching: ${err}`)
+        .then(res => res.json())
+        .then((res) => {
+          console.log(res)
+          fetch("http://localhost:3005/create-user", {               // 3001
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({auth_id : res.user._id})
+          }).then(res => res.json())
+            .then((data) => {
+              console.log(data)
+            })
+            .catch(err => `Error occured in fetching: ${err}`)
+
+        })
+        .catch(err => `Error occured in fetching: ${err}`)
     }
-    else
-    {
-        alert(`Error : ${error}`)
+    else {
+      alert(`Error : ${error}`)
     }
 
     // setState(prevState => {
