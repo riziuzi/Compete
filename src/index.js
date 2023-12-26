@@ -9,6 +9,7 @@ import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
 import UserAuth from './Pages/UserAuth'
 import Profile from './Pages/Profile';
+import DELETE2 from './Pages/DELETE2';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path : "/profile",
     element : <div><Profile /></div>
+  },
+  {
+    path : "/DELETE2",
+    element : <div><DELETE2 /></div>
   }
 ]);
 

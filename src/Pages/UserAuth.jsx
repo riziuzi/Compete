@@ -3,6 +3,7 @@ import SignInForm from "./UserAuth/SignIn"
 import SignUpForm from "./UserAuth/SignUp";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import useAuthentication from "../Components/Hook/useAuthenticate";
 
 export default function App() {
   const [type, setType] = useState("signIn");

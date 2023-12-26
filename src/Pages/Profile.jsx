@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import useAuthentication from '../Components/Hook/useAuthenticate'
+import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
+    const navigate = useNavigate()
     const [profile, setprofile] = useState({
         username: "",
         id: ""
     })
-    const authButton = evt => {
-
-    }
-    const { authenticated, loading, userObj } = useAuthentication()
+    const { authenticated, loading, userObj } = useAuthentication({navigateTo:"userauth"})
     const profileBasic = () => (
         <>
             <h1>Profile</h1>
@@ -53,11 +52,18 @@ export default function Profile() {
     //         });
 
     // }, [])
+    const logoutHandler = () => {
+        console.log("Logging Out!")
+        localStorage.removeItem('token');
+        navigate('/', { replace: true });
+        console.log("Logging Out!")
+    }
 
     return (
         <>
             <Navbar />
             {profileBasic(userObj)}
+            <button onClick={logoutHandler}>Log out</button>
             <Footer />
         </>
     )
