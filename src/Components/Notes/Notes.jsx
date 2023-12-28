@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorReadOnly from '../Editor/EditorReadOnly';
+import EditorReadOnly from '../UtilityComponents/EditorjsReadOnly/EditorReadOnly'
 
 const Notes = () => {
   // Sample data (replace with your own data)

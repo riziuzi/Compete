@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from './BlogCard';
+import BlogCard from '../UtilityComponents/BlogCard/BlogCard';
 import { read } from '../Functions/read';
 
 export default function Blog({ userId = "userId1", isprivate = true, defaultLimit = 3 } = {}) {
@@ -47,9 +47,10 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
       <h3>Your Posts :</h3>
       <br />
       {Blogs.map((data, index) => (
-        <div key={index}>             // in map, every tag should also be provided with a unique key
+        <div key={index}>            
           <BlogCard key={index} index={index + 1} data={data} />
-          <button onClick={() => makePublicHandler(data._id)}> Make {isprivate? `Public`:`Private`} {data._id} </button>
+          <button onClick={() => makePublicHandler(data._id)}> Make {isprivate? `Public`:`Private`}</button>
+          <br />
           <br />
         </div>
       ))}

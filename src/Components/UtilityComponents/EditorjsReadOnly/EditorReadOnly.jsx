@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EditorJS from '@editorjs/editorjs';
-import { EditorConfig } from './EditorConfiguration';
+import { EditorConfig } from '../../Editor/EditorConfiguration';
 
 const EditorComponent = ({ index, data }) => {
     const editorRef = useRef();

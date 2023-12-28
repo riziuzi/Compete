@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import useAuthentication from '../Components/Hook/useAuthenticate'
-import Blog from '../Components/Blog/Blog'
+import UserPosts from '../Components/UserPosts/UserPosts'
 
 const read_user = async (userId) => {
     const res = await fetch(`http://localhost:3005/read-user?userId=${userId}`, {
@@ -58,9 +58,9 @@ export default function Profile() {
             <br />
             <button onClick={logoutHandler}>Log out</button>
             <br />
-            <Blog userId={userObj?.userId} isprivate={true} />          // for user's private 
+            <UserPosts userId={userObj?.userId} isprivate={true} />       
             <br />
-            <Blog userId={userObj?.userId} isprivate={false} />          // for user's public
+            <UserPosts userId={userObj?.userId} isprivate={false} />         
             <br />
             <Footer />
         </>

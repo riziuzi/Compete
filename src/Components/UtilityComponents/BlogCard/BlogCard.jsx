@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import EditorReadOnly from '../Editor/EditorReadOnly'
+import EditorReadOnly from '../EditorjsReadOnly/EditorReadOnly'
 
 export default function BlogCard({index, data }) {
   const [dummy, setDummy] = useState(false)
