@@ -63,8 +63,8 @@ function SignInForm() {
         </div>
         <span>or use your account</span>
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="UserId"
           name="userId"
           value={state.userId}
           onChange={handleChange}

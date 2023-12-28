@@ -55,7 +55,7 @@ function SignUpForm() {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({auth_id : res.user._id})
+            body: JSON.stringify({userId : state.userId, name : state.name})
           }).then(res => res.json())
             .then((data) => {
               console.log(data)
@@ -102,11 +102,11 @@ function SignUpForm() {
           placeholder="Name"
         />
         <input
-          type="email"
+          type="text"
           name="userId"
           value={state.userId}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="UserId"
         />
         <input
           type="password"

@@ -2,22 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import { EditorConfig } from './EditorConfiguration';
 
-const EditorComponent = ({ data }) => {
+const EditorComponent = ({ index, data }) => {
     const editorRef = useRef();
 
     const initEditor = () => {
         const editor = new EditorJS({
             ...EditorConfig,
-            holder: 'editorjs',
+            holder: `editorjs-${index}`,
             data: data || {},
-            readOnly: true
+            readOnly: true,
+            onReady: () => {
+                editorRef.current = editor;
+            },
         });
-
-        editorRef.current = editor;
-
-        return () => {
-            // editorRef?.current?.destroy();
-        };
     }
 
     useEffect(() => {
@@ -31,7 +28,7 @@ const EditorComponent = ({ data }) => {
         };
     }, [data]);
 
-    return <div id="editorjs"></div>;
+    return <div id={`editorjs-${index}`}></div>;
 };
 
 export default EditorComponent;

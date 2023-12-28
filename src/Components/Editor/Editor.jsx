@@ -37,7 +37,7 @@ export default function Editor2() {
             return navigate("/userauth");
         }
         const postEndpoint = postId === null ? 'create-post' : `update-post`;
-        const postBody = postId === null ? { data: data, author_id: userObj.id } : { postId: postId, data: data, author_id: userObj.id };
+        const postBody = postId === null ? { data: data, userId: userObj.userId } : { postId: postId, data: data, userId: userObj.userId };
         fetch(`http://localhost:3002/${postEndpoint}`, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify(postBody) })
             .then((response) => {
                 if (!response.ok) { throw new Error(`HTTP error! Status: ${response.status}`) }
@@ -46,7 +46,7 @@ export default function Editor2() {
             .then((responseData) => {
                 postId===null && setPostId(responseData.postId)
                 if (postId === null) {
-                    fetch('http://localhost:3005/update-user', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ auth_id: userObj.id, private_post_id: responseData.postId }) })         // 3001
+                    fetch('http://localhost:3005/update-user', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ userId: userObj.userId, private_post_id: responseData.postId }) })         // 3001
                         .then((response) => response.json())
                         .then((updateResponse) => {
                             console.log('User update response:', updateResponse);
@@ -83,7 +83,7 @@ export default function Editor2() {
         <div>
             <div id='editorjs'></div>
             <div>{loading ? `...Loading` : authenticated ? userObj.username : `Not Authenticated`}</div>
-            <div>{typeof(postId)}</div>
+            <div>{(postId)}</div>
         </div>
     )
 }

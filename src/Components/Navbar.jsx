@@ -25,7 +25,7 @@ export default function Navbar() {
               {renderNavItem("JournalAI", "/JournalAI")}
               {renderNavItem("Resources", "/resource")}
               {loading ? renderNavItem('...Loading', '/profile') :
-                authenticated ? renderNavItem(userObj.username, '/profile') :
+                authenticated ? renderNavItem(userObj.userId, '/profile') :
                   renderNavItem('Login', '/userauth')
               }
               {renderNavItem("About", "/about")}

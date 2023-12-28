@@ -22,7 +22,6 @@ export const templateData = {
         "level": 2
       }
     },
-    // Additional blocks if needed
   ],
   "version": "2.22.0"
 };
