@@ -2,7 +2,7 @@ import React from "react";
 function SignUpForm() {
   const [state, setState] = React.useState({
     name: "",
-    username: "",
+    userId: "",
     password: "",
     password2: ""
   });
@@ -17,7 +17,7 @@ function SignUpForm() {
   const handleOnSubmit = evt => {
     evt.preventDefault();
 
-    const { name, username, password, password2 } = state;
+    const { name, userId, password, password2 } = state;
     let error = ""
 
     for (let key in state) {
@@ -103,8 +103,8 @@ function SignUpForm() {
         />
         <input
           type="email"
-          name="username"
-          value={state.username}
+          name="userId"
+          value={state.userId}
           onChange={handleChange}
           placeholder="Email"
         />

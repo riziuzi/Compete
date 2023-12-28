@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function SignInForm() {
   const navigate = useNavigate();
   const [state, setState] = React.useState({
-    username: "",
+    userId: "",
     password: ""
   });
 
@@ -19,8 +19,8 @@ function SignInForm() {
   const handleOnSubmit = evt => {
     evt.preventDefault();
 
-    const { username, password } = state;
-    if (username.length === 0 || password.length === 0) {
+    const { userId, password } = state;
+    if (userId.length === 0 || password.length === 0) {
       alert("Fill all the blanks");
       return;
     }
@@ -65,8 +65,8 @@ function SignInForm() {
         <input
           type="email"
           placeholder="Email"
-          name="username"
-          value={state.username}
+          name="userId"
+          value={state.userId}
           onChange={handleChange}
         />
         <input

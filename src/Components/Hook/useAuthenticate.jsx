@@ -10,12 +10,11 @@ const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      //
   const navigate = useNavigate()
   const checkAuthentication = async () => {
     try { 
-      console.log(dependencies)
       const token = localStorage.getItem('token');
       if (!token) {
         setAuthenticated(false);
         setLoading(false);
-        // navigateTo && navigate(`/${navigateTo}`, { replace: true })
+        navigateTo && navigate(`${navigateTo}`, { replace: true })
         return;
       }
 
@@ -31,7 +30,7 @@ const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      //
       // Also set the user ID
       setuserObj(response.data.user);
     } catch (error) {
-      // navigateTo && navigate(`/${navigateTo}`, { replace: true })
+      navigateTo && navigate(`${navigateTo}`, { replace: true })
       console.error('riziuzi: Authentication failed:', error.response.data.message);
     } finally {
       // Set loading to false when the authentication check is complete

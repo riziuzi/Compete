@@ -5,12 +5,8 @@ import useAuthentication from '../Components/Hook/useAuthenticate'
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
-    const navigate = useNavigate()
-    const [profile, setprofile] = useState({
-        username: "",
-        id: ""
-    })
-    const { authenticated, loading, userObj } = useAuthentication({navigateTo:"userauth"})
+    const [hookSignal, setHookSignal] = useState(false)
+    const { authenticated, loading, userObj } = useAuthentication({ navigateTo: "/userauth" , dependencies : [hookSignal]})
     const profileBasic = () => (
         <>
             <h1>Profile</h1>
@@ -22,43 +18,12 @@ export default function Profile() {
             </div>
         </>
     );
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     fetch("http://localhost:3001/protected", {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Authorization: token
-    //         },
-    //         credentials: 'include', // Include credentials (cookies)
-    //     })
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 return res.json();
-    //             } else {
-    //                 throw new Error(`HTTP error! Status: ${res.status}`);
-    //             }
-    //         })
-    //         .then(data => {
-    //             setprofile({
-    //                 ...profile,
-    //                 username: data.user.username,
-    //                 id: data.user.id
-    //             })
-    //         })
-    //         .catch(err => {
-    //             alert("Please authorize yourself from login page")
-    //             console.error(`Error occurred in fetching: ${err}`);
-    //         });
-
-    // }, [])
     const logoutHandler = () => {
         console.log("Logging Out!")
         localStorage.removeItem('token');
-        navigate('/', { replace: true });
+        setHookSignal((prev)=>!prev)
         console.log("Logging Out!")
     }
-
     return (
         <>
             <Navbar />
