@@ -58,7 +58,9 @@ export default function Profile() {
             <br />
             <button onClick={logoutHandler}>Log out</button>
             <br />
-            <Blog userId={userObj?.userId} isprivate={true} />
+            <Blog userId={userObj?.userId} isprivate={true} />          // for user's private 
+            <br />
+            <Blog userId={userObj?.userId} isprivate={false} />          // for user's public
             <br />
             <Footer />
         </>

@@ -24,16 +24,12 @@ const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      //
           Authorization: token,
         },
       });
-      console.log(response)
-      // If the server responds with success, the user is authenticated
       setAuthenticated(true);
-      // Also set the user ID
       setuserObj(response.data.user);
     } catch (error) {
       navigateTo && navigate(`${navigateTo}`, { replace: true })
       console.error('riziuzi: Authentication failed:', error.response.data.message);
     } finally {
-      // Set loading to false when the authentication check is complete
       setLoading(false);
     }
   };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EditorReadOnly from '../Editor/EditorReadOnly'
 
-export default function Blog_card({index, data }) {
+export default function BlogCard({index, data }) {
   const [dummy, setDummy] = useState(false)
   let headerText = Object.keys(data.data.blocks)
     .map((key) => data.data.blocks[key])

@@ -17,7 +17,7 @@ export default function Resource() {
       <Navbar />
       <div>{JSON.stringify(Hello)}</div>
       <a href="/resource/createcontent"><button><h6>Create Content</h6></button></a>
-      <Blog />
+      <Blog userId = "" isprivate = "false" defaultLimit=""/>
       {/* <Notes /> */}
       <Footer />
     </>
