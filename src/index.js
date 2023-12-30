@@ -9,6 +9,8 @@ import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
 import UserAuth from './Pages/UserAuth'
 import Profile from './Pages/Profile';
+import Trash from './Trash.jsx'
+import './Trash.css'
 
 import {
   createBrowserRouter,
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
   {
     path : "/profile",
     element : <div><Profile /></div>
+  },
+  {
+    path : "/trash",
+    element : <div><Trash /></div>
   },
 ]);
 
