@@ -9,6 +9,7 @@ import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
 import UserAuth from './Pages/UserAuth'
 import Profile from './Pages/Profile';
+import './index.css'
 import Trash from './Trash.jsx'
 import './Trash.css'
 
