@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      // this is how a default object value is passed : if nothing passed, then default object is empty {}, then default values are applied (I dont know how)
+const useAuthentication = ({failNavigateTo = null,successNavigateTo=null, dependencies=[]}={}) => {      // this is how a default object value is passed : if nothing passed, then default object is empty {}, then default values are applied (I dont know how)
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userObj, setuserObj] = useState(null);
@@ -14,7 +14,7 @@ const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      //
       if (!token) {
         setAuthenticated(false);
         setLoading(false);
-        navigateTo && navigate(`${navigateTo}`, { replace: true })
+        failNavigateTo && navigate(`${failNavigateTo}`, { replace: true })
         return;
       }
 
@@ -26,8 +26,9 @@ const useAuthentication = ({navigateTo = null, dependencies=[]}={}) => {      //
       });
       setAuthenticated(true);
       setuserObj(response.data.user);
+      successNavigateTo && navigate(`${successNavigateTo}`, { replace: true })
     } catch (error) {
-      navigateTo && navigate(`${navigateTo}`, { replace: true })
+      failNavigateTo && navigate(`${failNavigateTo}`, { replace: true })
       console.error('riziuzi: Authentication failed:', error.response.data.message);
     } finally {
       setLoading(false);

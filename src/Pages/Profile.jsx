@@ -18,7 +18,7 @@ const read_user = async (userId) => {
 export default function Profile() {
     const [userData, setUserData] = useState({})
     const [hookSignal, setHookSignal] = useState(false)
-    const { authenticated, loading, userObj } = useAuthentication({ navigateTo: "/userauth", dependencies: [hookSignal] })
+    const { authenticated, loading, userObj } = useAuthentication({ failNavigateTo: "/userauth", dependencies: [hookSignal] })
     useEffect(() => {
         const fetchData = async () => {
             if (userObj?.userId) {

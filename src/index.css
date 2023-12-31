@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* YourComponent.css */
+body {
+  background-color: #1E293B; /* Replace with your chosen dark color hex code */
+  margin: 0; /* Remove default body margin */
+}
+
+@layer base{
+    :root{
+        --primary-100:#2563EB;
+        --primary-200:#598EF3;
+        --primary-300:#D946EF;
+        --accent-100:#006fff;
+        --accent-200:#e1ffff;
+        --text-100:#D3E6FE;
+        --text-200:#9e9e9e;
+        --bg-100:#1E1E1E;
+        --bg-200:#2d2d2d;
+        --bg-300:#454545;
+    }
+}
