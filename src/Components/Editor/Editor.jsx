@@ -81,9 +81,9 @@ export default function Editor2() {
     }, [authenticated, postId]);
     return (
         <div>
-            <div id='editorjs'></div>
-            <div>{loading ? `...Loading` : authenticated ? userObj.username : `Not Authenticated`}</div>
-            <div>{(postId)}</div>
+            <div className="border-none" id='editorjs'></div>
+            {/* <div>{loading ? `...Loading` : authenticated ? userObj.username : `Not Authenticated`}</div> */}
+            {/* <div>{(postId)}</div> */}
         </div>
     )
 }

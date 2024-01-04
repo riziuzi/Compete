@@ -5,8 +5,7 @@ import Navbar from '../Components/Navbar'
 export default function CreateContent() {
   return (
     <>
-    <div><Navbar /></div>
-        <div className="container">
+        <div className="container border-none">
             <Editor />
         </div>
     </>

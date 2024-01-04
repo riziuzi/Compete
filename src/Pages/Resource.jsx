@@ -14,11 +14,9 @@ export default function Resource() {
   // }, [])
   return (
     <>
-      <Navbar />
-      <a href="/resource/createcontent"><button><h6>Create Content</h6></button></a>
+      {/* <a href="/resource/createcontent"><button><h6>Create Content</h6></button></a> */}
       <PublicPosts userId = "" isprivate = "false" defaultLimit=""/>
       {/* <Notes /> */}
-      <Footer />
     </>
   )
 }

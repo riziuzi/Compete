@@ -10,6 +10,7 @@ import CreateContent from './Pages/CreateContent';
 import UserAuth from './Pages/UserAuth'
 import Profile from './Pages/Profile';
 import './index.css'
+import Garage from './Garage';
 
 import {
   createBrowserRouter,
@@ -54,10 +55,10 @@ const router = createBrowserRouter([
     path : "/profile",
     element : <div><Profile /></div>
   },
-  // {
-  //   path : "/trash2",
-  //   element : <div><Trash2 /></div>
-  // },
+  {
+    path : "/garage",
+    element : <div><Garage /></div>
+  },
 ]);
 
 root.render(
