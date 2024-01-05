@@ -37,7 +37,7 @@ function SignInForm({ setIsLogin }) {
         console.log(data);
         localStorage.setItem("token", data.token);
         // Replace the current entry in the history stack with the home page
-        navigate('/', { replace: true });
+        navigate('/resource', { replace: true });
       })
       .catch(err => console.error(`Error occurred in fetching: ${err}`));
   };

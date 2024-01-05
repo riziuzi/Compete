@@ -25,6 +25,7 @@ export default function Profile() {
             if (userObj?.userId) {
                 try {
                     const data = await read_user(userObj.userId);
+                    console.log(data.user.createdDate)
                     setUserData({ ...data.user });
                 } catch (error) {
                     console.error('Error fetching user data:', error);
@@ -34,17 +35,7 @@ export default function Profile() {
 
         fetchData();
     }, [loading]);
-    const profileBasic = () => (
-        <>
-            <h1>Profile</h1>
-            <div>
-                <p>UserId: {loading ? '...Loading' : userObj?.userId || 'Not Found'}</p>
-            </div>
-            <div>
-                <p>Name: {loading ? '...Loading' : userData?.profile?.name || 'Not Found'}</p>
-            </div>
-        </>
-    );
+
     const logoutHandler = () => {
         console.log("Logging Out!")
         localStorage.removeItem('token');
@@ -122,8 +113,8 @@ export default function Profile() {
                                 p
                             </div>
                         </div>
-                        <div className="name mt-4 font-sans font-bold text-skin-text100 text-xl">riziuzi</div>
-                        <div className="usernameCreatedOn mt-1 font-sans text-skin-text200 text-xs">Username • CreatedOn</div>
+                        <div className="name mt-4 font-sans font-bold text-skin-text100 text-xl">{loading ? '...Loading' : userData?.profile?.name || 'Not Found'}</div>
+                        <div className="usernameCreatedOn mt-1 font-sans text-skin-text200 text-xs">{loading ? '...Loading' : userObj?.userId || 'Not Found'} • {userData.createdDate}</div>
                         <div className="usernameCreatedOn  mt-3 flex w-full px-2 justify-between">
                             <div className="Posts font-sans font-bold text-skin-text100 text-lg">Posts</div>
                             <div className="Followers font-sans font-bold text-skin-text100 text-lg">Followers</div>
