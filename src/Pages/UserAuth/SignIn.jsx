@@ -49,7 +49,7 @@ function SignInForm({ setIsLogin }) {
   return (
     <>
       <div className="rowOne mx-5 my-5 w-40 h-auto relative">
-      <a href="/">
+        <a href="/">
           <img className='hover:cursor-pointer' src="./img/img_logodark.svg" alt="Logo" />
         </a>
       </div>

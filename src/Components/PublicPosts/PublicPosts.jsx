@@ -4,7 +4,7 @@ import { read } from '../Functions/read';
 import Navbar2 from '../Navbar2';
 
 
-export default function Blog({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
+export default function BlogCard2({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
   const [Blogs, setBlogs] = useState([]);
   useEffect(() => {
     const controller = new AbortController();
@@ -120,7 +120,7 @@ export default function Blog({ userId = "", isprivate = false, defaultLimit = 10
           </div>
         </div>
 
-        <div className="rightSideBar mt-10 ml-5 sticky top-10 h-[calc(100vh)] overflow-y-scroll overflow-auto  hidden flex-col min-h-full w-1/5 md:flex">
+        <div className="rightSideBar mt-10 ml-5 sticky top-10 h-[calc(100vh)] overflow-y-scroll  no-scrollbar overflow-auto  hidden flex-col min-h-full w-1/5 md:flex">
           <div className="right1 px-6 py-3 bg-skin-bg200 flex flex-col">
             <div className="dummy flex justify-between"><div className='Employer text-skin-text100 text-sans font-bold'>Employers</div><div className='SeeAll text-skin-primary200'>See All</div></div>
             <br />

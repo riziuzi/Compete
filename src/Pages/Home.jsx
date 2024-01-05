@@ -59,7 +59,7 @@ const Home = () => {
       <div className="maincontainer flex flex-col w-full">
         <div className="header flex p-8 w-full  h-[80px] ">
           <a href="/">
-            <img src="./img/img_logodark.svg" alt="" className="Logo h-16 w-auto  ml-32" />
+            <img src="./img/dark.svg" alt="" className="Logo h-16 w-auto  ml-16" />
           </a>
         </div>
         <div className="hero h-[calc(100vh-82px-50px)] bg-[url(../public/imgHome/starsHome.svg)] flex justify-center items-center">

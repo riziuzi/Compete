@@ -1,10 +1,47 @@
-import React from 'react'
-// Story of sticky:
-// the div which is sticky should have two things, height (e.g. h-[100vh]) and a top-0 (these 0, 24, 28 are from the top point of the view) CSSLayerStatementRule, which makes it sticky on the top till the parent is in view, else it will become sticky to HTML document
-export default function Garage() {
-  return (
-    <>
-      <div className="mainContainer flex justify-between">
+import React, { useState } from 'react'
+import EditorReadOnly from '../EditorjsReadOnly/EditorReadOnly'
+
+export default function BlogCard({ index = null, data = null } = {}) {
+    const [dummy, setDummy] = useState(false)
+    let headerText = Object.keys(data.data.blocks)
+        .map((key) => data.data.blocks[key])
+        .find((block) => block.type === "header");
+    let headerTextValue = headerText ? headerText.data.text : null;
+    const handleBlogOnClick = () => {
+        setDummy((prev) => !prev)
+    }
+    return (
+        <div>
+            {!dummy ? (
+                <div className='card w-full flex flex-col min-h-48' onClick={handleBlogOnClick}>
+                    {/* <div className='card_header w-full items-center flex' >
+                        <div className="profile w-10 h-10 border flex justify-center items-center rounded-full border-red-600"><div className='text-skin-text100'>P</div></div>
+                        <div className="name_postTime flex flex-col flex-1 ">
+                            <div className="name justify-start ml-3 flex text-sm text-skin-text200"><div className=''>{data["userId"]}</div></div>
+                        </div>
+                    </div> */}
+                    <div className="postTime justify-start ml-3 flex text-center text-xs text-skin-text200">{data["lastUpdateDate"]}3 hours</div>
+                    <a className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{headerTextValue}</a>
+                    <div className='cardTags text-skin-text200 text-sm my-3 text-left w-full'>#UPSC #masti</div>
+                    <div className="interacations text-left w-full my-3 text-skin-text200 flex justify-between">
+                        <div className="commentsLikesSave flex">
+                            <div className="comments w-10 text-skin-text200">C</div>
+                            <div className="Likes w-10 text-skin-text200">C</div>
+                            <div className="Save w-10 text-skin-text200">C</div>
+                        </div>
+                        <div className='interactedProfiles text-skin-text200'>rizi, userId1</div>
+                    </div>
+                </div>
+            ) : (<div>
+                <button onClick={handleBlogOnClick}>
+                    <EditorReadOnly index={index} data={data.data} />
+                </button></div>)
+            }
+        </div>
+
+    )
+}
+<div className="mainContainer flex justify-between">
         <div className="col1 bg-skin-bg200 flex flex-col w-1/6 justify-between top-0 h-[calc(100vh)] sticky overflow-y-scroll no-scrollbar overscroll-auto">
           <div className="upper">
             <div className="logo flex mx-5 my-5">
@@ -96,6 +133,3 @@ export default function Garage() {
           </div>
         </div>
       </div>
-    </>
-  )
-}
