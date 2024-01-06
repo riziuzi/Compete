@@ -7,10 +7,11 @@ import Disclaimer from './Pages/Disclaimer';
 import CountDown from './Components/CountDown/CountDown';
 import Resource from './Pages/Resource';
 import CreateContent from './Pages/CreateContent';
-import UserAuth from './Pages/UserAuth'
 import Profile from './Pages/Profile';
 import './index.css'
-import Garage from './Garage';
+import Garage from './Garage'
+import SignInForm from './Pages/UserAuth/SignIn';
+import SignUpForm from './Pages/UserAuth/SignUp';
 
 import {
   createBrowserRouter,
@@ -48,16 +49,20 @@ const router = createBrowserRouter([
     element: <div><CreateContent /></div>
   },
   {
-    path : "/userauth",
-    element : <div><UserAuth /></div>
-  },
-  {
     path : "/profile",
     element : <div><Profile /></div>
   },
   {
     path : "/garage",
     element : <div><Garage /></div>
+  },
+  {
+    path : "/signin",
+    element : <div><SignInForm /></div>
+  },
+  {
+    path : "/signup",
+    element : <div><SignUpForm /></div>
   },
 ]);
 

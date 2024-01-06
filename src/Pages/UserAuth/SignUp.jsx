@@ -1,5 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 function SignUpForm({ setIsLogin }) {
+  const navigate = useNavigate()
   const [state, setState] = React.useState({
     name: "",
     userId: "",
@@ -24,16 +27,14 @@ function SignUpForm({ setIsLogin }) {
         error = `${key} should be filled!`
         break
       }
-      // else if((key==="password") && (state[key].length < 8))
-      // {
-      //   console.log((key))
-      //   error = "Password length should be >= 8"
-      // }
-      // else if((key==="password2") && (state[key].length < 8))
-      // {
-      //   console.log((key))
-      //   error = "Password length should be >= 8"
-      // }
+      else if ((key === "password") && (state[key].length < 8)) {
+        console.log((key))
+        error = "Password length should be >= 8"
+      }
+      else if ((key === "password2") && (state[key].length < 8)) {
+        console.log((key))
+        error = "Password length should be >= 8"
+      }
     }
     if (error.length === 0) {
       fetch("http://localhost:3001/register", {
@@ -41,9 +42,18 @@ function SignUpForm({ setIsLogin }) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(state)
+        body: JSON.stringify({
+          "userId": state.userId,
+          "password": state.password
+        })
       })
-        .then(res => res.json())
+        .then(res => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+        })
         .then((res) => {
           console.log(res)
           fetch("http://localhost:3005/create-user", {               // 3001
@@ -52,9 +62,35 @@ function SignUpForm({ setIsLogin }) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ userId: state.userId, name: state.name })
-          }).then(res => res.json())
+          }).then(res => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+          })
             .then((data) => {
               console.log(data)
+              fetch("http://localhost:3001/login", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(state)
+              })
+                .then(res => {
+                  if (res.ok) {
+                    return res.json();
+                  } else {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                  }
+                })
+                .then((data) => {
+                  console.log(data);
+                  localStorage.setItem("token", data.token);
+                  navigate('/resource', { replace: true });
+                })
+                .catch(err => console.error(`Error occurred in fetching: ${err}`));
             })
             .catch(err => `Error occured in fetching: ${err}`)
 
@@ -78,7 +114,7 @@ function SignUpForm({ setIsLogin }) {
     <>
       <div className="rowOne mx-5 my-5 w-40 h-auto relative">
         <a href="/">
-          <img className='hover:cursor-pointer' src="./img/img_logodark.svg" alt="Logo" />
+          <img className='hover:cursor-pointer' src="./img/dark.svg" alt="Logo" />
         </a>
       </div>
       <div className=' rowTwo py-10 flex justify-center w-full'>

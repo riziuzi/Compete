@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import BlogCard from '../UtilityComponents/BlogCard/BlogCard';
 import { read } from '../Functions/read';
 import Navbar2 from '../Navbar2';
+import useAuthentication from '../Hook/useAuthenticate';
 
 
 export default function BlogCard2({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
+  const { authenticated, loading, userObj } = useAuthentication()
   const [Blogs, setBlogs] = useState([]);
   useEffect(() => {
     const controller = new AbortController();
@@ -35,8 +37,8 @@ export default function BlogCard2({ userId = "", isprivate = false, defaultLimit
             <div className='left1 my-1 text-skin-text100 text-xl font-bold'>MindScape India, is a great community of 1,284 developers.</div>
             <br />
             <div className='left1 my-1 text-skin-text200 text-sm'>Share ideas, ask questions, and stay updated.</div>
-            <button className="create_account h-9 w-full my-1 bg-skin-primary100 text-skin-text100">Create Account</button>
-            <div className='dummy w-full justify-center my-1 flex'><a href="/userauth" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div>
+            {!authenticated? (<><button className="create_account h-9 w-full my-1 bg-skin-primary100"><a className='text-skin-text100 hover:cursor-pointer hover:no-underline' href="/signup">Create Account</a></button>
+            <div className='dummy w-full justify-center my-1 flex'><a href="/signin" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div></>):(<></>)}
           </div>
           <br />
           <div className="left2 px-6 py-3 bg-skin-bg200 flex flex-col">

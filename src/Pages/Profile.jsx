@@ -19,7 +19,7 @@ export default function Profile() {
     const [option, setOption] = useState("Public Posts")
     const [userData, setUserData] = useState({})
     const [hookSignal, setHookSignal] = useState(false)
-    const { authenticated, loading, userObj } = useAuthentication({ failNavigateTo: "/userauth", dependencies: [hookSignal] })
+    const { authenticated, loading, userObj } = useAuthentication({ failNavigateTo: "/signin", dependencies: [hookSignal] })
     useEffect(() => {
         const fetchData = async () => {
             if (userObj?.userId) {
