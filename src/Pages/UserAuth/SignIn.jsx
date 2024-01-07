@@ -21,12 +21,12 @@ function SignInForm({ setIsLogin }) {
   const handleOnSubmit = evt => {
     evt.preventDefault();
     const { userId, password } = state;
-  
+
     if (userId.length === 0 || password.length === 0) {
       alert("Fill in all the blanks");
       return;
     }
-  
+
     fetch("http://localhost:3001/login", {
       method: 'POST',
       headers: {
@@ -34,26 +34,22 @@ function SignInForm({ setIsLogin }) {
       },
       body: JSON.stringify(state)
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-    })
-    .then((data) => {
-      console.log(data);
-      
-      if (data.ok) { // Assuming data.ok is present in the response
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+      })
+      .then((data) => {
+        console.log(data);
         localStorage.setItem("token", data.token);
         navigate('/resource', { replace: true });
-      } else {
-        throw new Error('Login failed');
-      }
-    })
-    .catch(err => console.error(`Error occurred: ${err.message}`));
+
+      })
+      .catch(err => console.error(`Error occurred: ${err.message}`));
   };
-  
+
 
   return (
     <>

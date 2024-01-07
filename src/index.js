@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './Pages/Home'
+import Welcome from './Pages/Welcome'
 import About from './Pages/About'
 import JournalAI from './Pages/JournalAI'
 import Disclaimer from './Pages/Disclaimer';
@@ -21,8 +21,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <div><Home /></div>,
+    path: "/welcome",
+    element: <div><Welcome /></div>,
   },
   {
     path:"/counter",
@@ -63,6 +63,10 @@ const router = createBrowserRouter([
   {
     path : "/signup",
     element : <div><SignUpForm /></div>
+  },
+  {
+    path : "/",
+    element : <div><Resource /></div>
   },
 ]);
 

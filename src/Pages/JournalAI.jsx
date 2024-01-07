@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../Components/Navbar'
+import Navbar2 from '../Components/Navbar2'
 import Task from '../Components/Task'
 import Footer from '../Components/Footer'
 import OlderTask from '../Components/OlderTask'
@@ -11,7 +11,7 @@ export default function JournalAI() {
   const [tasks, setTasks] = useState([])
   const userID = "rishiSIR"    // must be unique
   useEffect(() => {
-    fetch("https://compete-server.onrender.com/api/tasks/"+userID).then(
+    fetch("https://compete-server.onrender.com/api/tasks/" + userID).then(
       res => res.json()
     ).then(
       data => {
@@ -22,12 +22,17 @@ export default function JournalAI() {
 
   return (
     <>
-        <Navbar />
-        <Task />
-        {tasks.map((data, index)=>(
+      <Navbar2 />
+      <div className="mainContainer flex flex-col w-full justify-center items-center bg-skin-bg100 ">
+        <div className="Task flex w-2/3 bg-skin-bg300 mt-10 rounded-lg">
+          <Task />
+        </div>
+        <div className="OlderTask mt-10"></div>
+        {tasks.map((data, index) => (
           <OlderTask key={index} index={index} {...data} />
         ))}
-        <Footer />
+      </div>
+      <Footer />
     </>
   )
 }
@@ -42,11 +47,11 @@ export default function JournalAI() {
 
 // 1) task no. will be give here in React, not in server or faDatabase
 // 2) read https://stackoverflow.com/questions/74634082/connect-to-localhost-from-mobile-phone-using-express-nodejs
-// 3) make a static IP address, which is used by the server.py to run, and never changes (because though 0.0.0.0 opens all network interfaces, 
-// but the ip address to access the server still changes, since it is machine ip iteself), 
-// right now I am jsut assigning 192... by myself, but "If you're running this in a production environment, 
-// you might want to consider more robust solutions, such as using a static IP address, Dynamic DNS, or containerization, 
-// depending on your specific requirements. For development purposes within a controlled environment, manually assigning the 
+// 3) make a static IP address, which is used by the server.py to run, and never changes (because though 0.0.0.0 opens all network interfaces,
+// but the ip address to access the server still changes, since it is machine ip iteself),
+// right now I am jsut assigning 192... by myself, but "If you're running this in a production environment,
+// you might want to consider more robust solutions, such as using a static IP address, Dynamic DNS, or containerization,
+// depending on your specific requirements. For development purposes within a controlled environment, manually assigning the
 // IP address as you've done is a straightforward approach.""
 //
 //

@@ -30,9 +30,8 @@ export default function BlogCard2({ userId = "", isprivate = false, defaultLimit
 
   return (
     <>
-      <Navbar2 />
       <div className='main_container flex justify-center items-start'>
-        <div className='leftSideBar w-1/5 mt-10 mr-5 top-10 h-[calc(100vh)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  sm:flex'>
+        <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  sm:flex'>
           <div className="first_left px-6 py-3 felx flex-col bg-skin-bg200 shadow-2xl">
             <div className='left1 my-1 text-skin-text100 text-xl font-bold'>MindScape India, is a great community of 1,284 developers.</div>
             <br />
@@ -122,7 +121,7 @@ export default function BlogCard2({ userId = "", isprivate = false, defaultLimit
           </div>
         </div>
 
-        <div className="rightSideBar mt-10 ml-5 sticky top-10 h-[calc(100vh)] overflow-y-scroll  no-scrollbar overflow-auto  hidden flex-col min-h-full w-1/5 md:flex">
+        <div className="rightSideBar mt-10 ml-5 sticky top-[104px] h-[calc(100vh-104px)] overflow-y-scroll  no-scrollbar overflow-auto  hidden flex-col min-h-full w-1/5 md:flex">
           <div className="right1 px-6 py-3 bg-skin-bg200 flex flex-col">
             <div className="dummy flex justify-between"><div className='Employer text-skin-text100 text-sans font-bold'>Employers</div><div className='SeeAll text-skin-primary200'>See All</div></div>
             <br />

@@ -1,12 +1,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import CountDown from '../Components/CountDown/CountDown';
 
-const Home = () => {
+const Welcome = () => {
   const events_list = [{ "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" },
   { "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" }]
   return (
@@ -67,7 +66,7 @@ const Home = () => {
           <div className="dummy flex flex-col mt-20 h-64 justify-between items-center">
             <div className="tagline text-3xl font-sans font-bold text-skin-text100">The free and effective way to learn!</div>
             <dic className="userAuthButtons flex flex-col justify-center items-center">
-              <button className="GetStarted w-64 my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-skin-primary300 rounded-xl">GET STARTED</button>
+              <a href="/signup"><button className="GetStarted w-64 my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-skin-primary300 rounded-xl">GET STARTED</button></a>
               <a href="/userauth"><button className="GetStarted w-64  my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-transparent hover:shadow-2xl rounded-xl">I ALREADY HAVE AN ACCOUNT</button></a>
             </dic>
           </div>
@@ -248,4 +247,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Welcome;

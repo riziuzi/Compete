@@ -13,7 +13,7 @@ export default function BlogCard({ index = null, data = null, isProfile = false 
   return (
     <div>
       {!dummy ? (
-        <div className='card w-full flex flex-col min-h-48' onClick={handleBlogOnClick}>
+        <div className='card w-full flex flex-col h-40' onClick={handleBlogOnClick}>
           {isProfile ? (
             <div className='card_header w-full items-center flex' >
               <div className="name_postTime flex flex-col flex-1 ">

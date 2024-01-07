@@ -21,7 +21,7 @@ export default function Navbar() {
           </a>
           <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              {renderNavItem("Home", "/")}
+              {renderNavItem("Home", "/notfound")}
               {renderNavItem("JournalAI", "/JournalAI")}
               {renderNavItem("Resources", "/resource")}
               {loading ? renderNavItem('...Loading', '/profile') :
