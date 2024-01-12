@@ -13,6 +13,7 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
       try {
         const newData = await read({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);
         newData && setBlogs((prevBlogs) => [...prevBlogs, ...newData]);
+        console.log(newData)
       } catch (error) {
         console.log(error);
       }
