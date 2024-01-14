@@ -10,18 +10,18 @@ const EditorComponent = ({ index, data }) => {
     const editor = useBlockNote({
         editable: false,
         initialContent: cleanData,
-        onEditorReady: (editor) =>{ console.log('Editor is ready!', editor)
+        onEditorReady: (editor) => {
+            console.log('Editor is ready!', editor)
         },
-        onEditorContentChange: (editor) =>
-            {
-                console.log("Editr Chnaged?")                                              // Why Blocks not getting updated? But if used editor.topLevelBlocks directly everything works fine
-            },
+        onEditorContentChange: (editor) => {
+            console.log("Editr Chnaged?")                                              // Why Blocks not getting updated? But if used editor.topLevelBlocks directly everything works fine
+        },
         domAttributes: {
             editor: {
                 class: "min-h-[calc(100vh-152px)] w-full"
             },
             blockGroup: {
-                class: ""
+                class: "mx-16 my-16"
             },
             blockContainer: {
                 class: "",
@@ -29,15 +29,17 @@ const EditorComponent = ({ index, data }) => {
         },
     });
 
-    return(
-        <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center text-left w-full " />
+    return (
+        <div className="mainContainer bg-skin-bg100 flex flex-col items-center justify-center">
+            <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center w-[95%]" />
+        </div>
     )
 
 };
 function transformData(inputData) {
     const transformedData = inputData.map(item => {
         return {
-            id: item.id || 'NoIdPresent', 
+            id: item.id || 'NoIdPresent',
             type: item.type || 'paragraph', // default is paragraph
             props: {
                 textColor: item.props?.textColor || 'default',
@@ -71,31 +73,31 @@ function transformContent(content) {
         };
     }
 }
-const sampleData2=[
+const sampleData2 = [
     {
-      "id": "initialBlockId",
-      "type": "image",
-      "props": {
-        "backgroundColor": "default",
-        "textAlignment": "left",
-        "url": "https://unsplash.com/photos/a-woman-working-on-a-laptop-6uAssP0vuPs",
-        "caption": "",
-        "width": 512
-      },
-      "children": []
+        "id": "initialBlockId",
+        "type": "image",
+        "props": {
+            "backgroundColor": "default",
+            "textAlignment": "left",
+            "url": "https://unsplash.com/photos/a-woman-working-on-a-laptop-6uAssP0vuPs",
+            "caption": "",
+            "width": 512
+        },
+        "children": []
     },
     {
-      "id": "1b931231-0e0f-4413-90b7-6642c4561fa7",
-      "type": "paragraph",
-      "props": {
-        "textColor": "default",
-        "backgroundColor": "default",
-        "textAlignment": "left"
-      },
-      "content": [],
-      "children": []
+        "id": "1b931231-0e0f-4413-90b7-6642c4561fa7",
+        "type": "paragraph",
+        "props": {
+            "textColor": "default",
+            "backgroundColor": "default",
+            "textAlignment": "left"
+        },
+        "content": [],
+        "children": []
     }
-  ]
+]
 const sampleData = [                                                                     // sample data, the only problem in fetching data is that stylesfield sometimes is not present in mongodb (because mongoose not able to send empty {} in styles somehow). So data pre processing needed.
     {
         id: 'initialsssBlockId',
