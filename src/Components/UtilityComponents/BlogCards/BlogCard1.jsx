@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 
 export default function BlogCard({ index = null, data = null, isProfile = false, handleShow } = {}) {
-  const [dummy, setDummy] = useState(false)
-  let headerText = "Sample Heading"
-  // Object.keys(data.data.blocks)
-  //   .map((key) => data.data.blocks[key])
-  //   .find((block) => block.type === "header");
-  // let headerTextValue = headerText ? headerText.data.text : null;
-
   return (
     <div>
       <div className='card w-full flex flex-col h-52'>
@@ -27,7 +20,7 @@ export default function BlogCard({ index = null, data = null, isProfile = false,
           </div>
         )}
 
-        <a onClick={() => { handleShow(data) }} className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{headerText}</a>
+        <a onClick={() => { handleShow(data) }} className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{data.data.heading}</a>
         <div className='cardTags text-skin-text200 text-sm my-3 text-left w-full'>#UPSC #masti</div>
         <div className="interacations text-left w-full my-3 text-skin-text200 flex justify-between">
           <div className="commentsLikesSave flex">

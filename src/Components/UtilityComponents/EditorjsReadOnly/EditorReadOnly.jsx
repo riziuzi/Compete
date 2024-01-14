@@ -5,8 +5,8 @@ import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import { redTheme } from '../../../GarageBlockNote';
 
 const EditorComponent = ({ index, data }) => {
-
-    const cleanData = transformData(data)
+    console.log(data)
+    const cleanData = transformData(data.content)
     const editor = useBlockNote({
         editable: false,
         initialContent: cleanData,

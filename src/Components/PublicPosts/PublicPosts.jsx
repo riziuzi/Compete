@@ -166,6 +166,9 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
         </div>) : (
         <>
           <button onClick={handleShow} className='text-skin-text100 font-sans font-bold bg-skin-bg200 p-2 m-3 rounded-2xl'>Back</button>
+          <div className="header rounded-lg shadow-2xl shadow-blue-900 text-center text-skin-text100 text-6xl w-5/6 font-bold h-32 py-5 my-3 bg-skin-bg200 mx-auto" >
+            {focusedData.data.heading}
+          </div>
           <EditorReadOnly data={focusedData.data} />
         </>
       )}
