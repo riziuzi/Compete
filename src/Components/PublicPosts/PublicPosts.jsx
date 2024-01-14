@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from '../UtilityComponents/BlogCard/BlogCard';
+import BlogCard from '../UtilityComponents/BlogCards/BlogCard1';
 import { read } from '../Functions/read';
 import Navbar2 from '../Navbar2';
 import useAuthentication from '../Hook/useAuthenticate';
 
 
-export default function BlogCard2({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
+export default function PublicPosts({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
   const { authenticated, loading, userObj } = useAuthentication()
   const [Blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function BlogCard2({ userId = "", isprivate = false, defaultLimit
             </div>
           </div>
         </div>
-        <div className='mainBar my-5 min-h-full w-1/2'>
+        <div className='mainBar my-5 min-h-full w-2/3'>
           {Blogs.map((data, index) => (
             // in map, every tag should also be provided with a unique key
             <div className='blogCard bg-skin-bg200 px-6 py-6 my-5' key={index}>

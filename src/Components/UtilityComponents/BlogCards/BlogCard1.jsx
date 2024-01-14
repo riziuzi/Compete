@@ -3,17 +3,18 @@ import EditorReadOnly from '../EditorjsReadOnly/EditorReadOnly'
 
 export default function BlogCard({ index = null, data = null, isProfile = false } = {}) {
   const [dummy, setDummy] = useState(false)
-  let headerText = Object.keys(data.data.blocks)
-    .map((key) => data.data.blocks[key])
-    .find((block) => block.type === "header");
-  let headerTextValue = headerText ? headerText.data.text : null;
+  let headerText = "Sample Heading"
+  // Object.keys(data.data.blocks)
+  //   .map((key) => data.data.blocks[key])
+  //   .find((block) => block.type === "header");
+  // let headerTextValue = headerText ? headerText.data.text : null;
   const handleBlogOnClick = () => {
     setDummy((prev) => !prev)
   }
   return (
     <div>
       {!dummy ? (
-        <div className='card w-full flex flex-col h-40' onClick={handleBlogOnClick}>
+        <div className='card w-full flex flex-col h-52' onClick={handleBlogOnClick}>
           {isProfile ? (
             <div className='card_header w-full items-center flex' >
               <div className="name_postTime flex flex-col flex-1 ">
@@ -30,7 +31,7 @@ export default function BlogCard({ index = null, data = null, isProfile = false 
             </div>
           )}
 
-          <a className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{headerTextValue}</a>
+          <a className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{headerText}</a>
           <div className='cardTags text-skin-text200 text-sm my-3 text-left w-full'>#UPSC #masti</div>
           <div className="interacations text-left w-full my-3 text-skin-text200 flex justify-between">
             <div className="commentsLikesSave flex">
@@ -42,8 +43,9 @@ export default function BlogCard({ index = null, data = null, isProfile = false 
           </div>
         </div>
       ) : (<div>
-        <button onClick={handleBlogOnClick}>
           <EditorReadOnly index={index} data={data.data} />
+        <button onClick={handleBlogOnClick} className=' w-full'>
+          previous
         </button></div>)
       }
     </div>

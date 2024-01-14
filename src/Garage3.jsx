@@ -83,8 +83,8 @@ export default function Garage() {
     return (
         <>
             <div className="mainContainer bg-skin-bg100 flex flex-col items-center justify-center">
-                <input className="header rounded-lg shadow-2xl shadow-blue-900 text-center text-skin-text100 text-6xl w-5/6 font-bold h-32 py-5 my-3 bg-skin-bg200 mx-auto " placeholder="Main heading ..."></input>
-                <div className="dummy2 flex justify-center w-full ">
+                <input className="header rounded-lg shadow-2xl shadow-blue-900 text-center text-skin-text100 text-6xl w-5/6 font-bold h-32 py-5 my-3 focus:border-transparent bg-skin-bg200 mx-auto " placeholder="Main heading ..."></input>
+                <div className="dummy2 flex justify-center borde w-full ">
                     <div className="dummy w-full flex items-center justify-center  ">
                         <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center w-[95%]" />
                     </div>

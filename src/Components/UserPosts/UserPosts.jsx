@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from '../UtilityComponents/BlogCard/BlogCard';
+import BlogCard2 from '../UtilityComponents/BlogCards/BlogCard2';
 import { read } from '../Functions/read';
 
 export default function Blog({ userId = "userId1", isprivate = true, defaultLimit = 10 } = {}) {
@@ -62,8 +62,8 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     <>
       {Blogs.map((data, index) => (
         <div key={index}>
-          <div className='UserPosts bg-skin-bg200 p-5'>
-            <BlogCard key={index} index={index + 1} data={data} isProfile={true} />
+          <div className='UserPosts border border-green-600 bg-skin-bg200 p-5'>
+            <BlogCard2 key={index} index={index + 1} data={data} isProfile={true} />
             <button
               className='MakePrivate bg-skin-primary100 p-2 text-sm font-sans font-bold text-skin-text200'
               onClick={() => makePPHandler(data._id, index)}
