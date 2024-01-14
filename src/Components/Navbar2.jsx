@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useAuthenticate from "./Hook/useAuthenticate"
 
-export default function Navbar() {
+export default function Navbar2() {
     const [handle, sethandle] = useState()
     const { authenticated, loading, userObj } = useAuthenticate()
     const renderNavItem = (text, link) => (

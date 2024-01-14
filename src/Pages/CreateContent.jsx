@@ -1,13 +1,14 @@
 import React from 'react'
-import Editor from '../Components/Editor/Editor'
-import Navbar from '../Components/Navbar'
+import Navbar2 from '../Components/Navbar2'
+import BlockNote from '../Components/Editor/BlockNote/BlockNote'
 
 export default function CreateContent() {
   return (
     <>
-        <div className="container border-none">
-            <Editor />
-        </div>
+        <Navbar2 />
+      <div className="container border-none">
+        <BlockNote />
+      </div>
     </>
   )
 }

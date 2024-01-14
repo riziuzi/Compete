@@ -33,11 +33,20 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
       <div className='main_container flex justify-center items-start'>
         <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  sm:flex'>
           <div className="first_left px-6 py-3 felx flex-col bg-skin-bg200 shadow-2xl">
-            <div className='left1 my-1 text-skin-text100 text-xl font-bold'>MindScape India, is a great community of 1,284 developers.</div>
-            <br />
-            <div className='left1 my-1 text-skin-text200 text-sm'>Share ideas, ask questions, and stay updated.</div>
-            {!authenticated? (<><button className="create_account h-9 w-full my-1 bg-skin-primary100"><a className='text-skin-text100 hover:cursor-pointer hover:no-underline' href="/signup">Create Account</a></button>
-            <div className='dummy w-full justify-center my-1 flex'><a href="/signin" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div></>):(<></>)}
+            {authenticated?(<div className="IfLoggedIn">
+              <a href="/createcontent">
+              <button  className="Post rounded-3xl font-sans font-bold text-xl w-full bg-skin-primary200 text-text py-5">         
+                Post
+              </button>
+              </a>
+            </div>):(
+            <div className="else">
+              <div className='left1 my-1 text-skin-text100 text-xl font-bold'>MindScape India, is a great community of 1,284 developers.</div>
+              <br />
+              <div className='left1 my-1 text-skin-text200 text-sm'>Share ideas, ask questions, and stay updated.</div>
+              <button className="create_account h-9 w-full my-1 bg-skin-primary100"><a className='text-skin-text100 hover:cursor-pointer hover:no-underline' href="/signup">Create Account</a></button>
+              <div className='dummy w-full justify-center my-1 flex'><a href="/signin" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div>
+            </div>)}
           </div>
           <br />
           <div className="left2 px-6 py-3 bg-skin-bg200 flex flex-col">
@@ -100,25 +109,6 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
               </div>
             </button>
           </div> */}
-          <div className='card border border-red-600 h-52'>
-            <div className='card_header border border-red-600 flex' >
-              <div className="profile w-10 border border-red-600">P</div>
-              <div className="name_postTime flex flex-col flex-1 border border-red-600">
-                <div className="name border border-red-600">riziuzi</div>
-                <div className="postTime border border-red-600">3 hours ago</div>
-              </div>
-            </div>
-            <div className='cardTitle border border-red-600'>This is a guide for all of you, Aspirants, so be ready for the greates journey!</div>
-            <div className='cardTags border border-red-600'>#UPSC #masti</div>
-            <div className="interacations border border-red-600 flex flex-1 justify-between">
-              <div className="commentsLikesSave border border-red flex">
-                <div className="comments w-10 border border-red-600">C</div>
-                <div className="Likes w-10 border border-red-600">C</div>
-                <div className="Save w-10 border border-red-600">C</div>
-              </div>
-              <div className='interactedProfiles border border-red-600'>rizi, userId1</div>
-            </div>
-          </div>
         </div>
 
         <div className="rightSideBar mt-10 ml-5 sticky top-[104px] h-[calc(100vh-104px)] overflow-y-scroll  no-scrollbar overflow-auto  hidden flex-col min-h-full w-1/5 md:flex">
@@ -168,3 +158,4 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
   );
 }
 
+// issue: the color is superimposed by the color pallet used by Editor
