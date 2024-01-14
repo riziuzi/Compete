@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function SignUpForm({ setIsLogin }) {
+function SignUpForm() {
   const navigate = useNavigate()
   const [state, setState] = React.useState({
     name: "",
@@ -100,14 +100,6 @@ function SignUpForm({ setIsLogin }) {
     else {
       alert(`Error : ${error}`)
     }
-
-    // setState(prevState => {
-    //   let newState = { ...prevState };
-    //   for (let key in newState) {
-    //     newState[key] = "";
-    //   }
-    //   return newState;
-    // });
   };
 
   return (
@@ -124,13 +116,12 @@ function SignUpForm({ setIsLogin }) {
           <div className='flex flex-col'>
             <form onSubmit={handleOnSubmit} className='flex flex-col max-w-96 items-center'>
               <div className='flex-wrap'>
-                <input type='text' name='name' value={state.name} onChange={handleChange} placeholder="Your Name" className='focus:outline-none w-60 bg-slate-100 focus:bg-white rounded-2xl mt-2 px-2 py-1' />
-                {/* <input placeholder="Last Name" className='w-28 ml-3 bg-slate-100 focus:outline-none focus:bg-white rounded-2xl my-2 px-2 py-1' /> */}
+                <input type='text' name='name' value={state.name} onChange={handleChange} placeholder="Your Name" className='focus:outline-none w-60 bg-slate-100 text-black focus:bg-white rounded-2xl mt-2 px-2 py-1' />
               </div>
-              <input type="text" name="userId" value={state.userId} onChange={handleChange} placeholder="Unique UserId" className='rounded-2xl bg-slate-100 focus:outline-none focus:bg-slate-50 w-60 mt-2 px-2 py-1' />
-              <input type="password" name="password" value={state.password} onChange={handleChange} placeholder="Create Password" className='rounded-2xl bg-slate-100 focus:outline-none focus:bg-slate-50 w-60 mt-2 px-2  py-1' />
+              <input type="text" name="userId" value={state.userId} onChange={handleChange} placeholder="Unique UserId" className='rounded-2xl bg-slate-100 focus:outline-none text-black focus:bg-slate-50 w-60 mt-2 px-2 py-1' />
+              <input type="password" name="password" value={state.password} onChange={handleChange} placeholder="Create Password" className='rounded-2xl bg-slate-100 text-black focus:outline-none focus:bg-slate-50 w-60 mt-2 px-2  py-1' />
               <button className='bg-skin-primary300 py-1 mt-4 w-60 rounded-2xl'>Let's go</button>
-              <a onClick={() => { setIsLogin(prev => !prev) }} className='text-sm hover:cursor-pointer text-cyan-100 mt-10 mb-24'>Got no account? Register here.</a>
+              <a href="/signin" className='text-sm hover:cursor-pointer text-cyan-100 mt-10 mb-24'>Got no account? Register here.</a>
             </form>
           </div>
         </div>
@@ -138,7 +129,6 @@ function SignUpForm({ setIsLogin }) {
           <img src="./img/signup.svg" alt="kid_Photo" className='object-cover w-96 h-auto mt-8 ml-0' />
         </div>
       </div>
-      {/* <div className="first border border-green-700 w-1/2 h-1/2"></div> */}
     </>
   );
 }
