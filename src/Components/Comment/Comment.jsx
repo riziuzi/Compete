@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import useAuthentication from '../Hook/useAuthenticate'
 // import { Data } from './GarageData'
 
-const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
+const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
   const [replyBoxReveal, setReplyBoxReveal] = useState(false)
   const [reply, setReply] = useState("")
 
@@ -34,7 +34,7 @@ const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, repl
       {
         dictionary[commentId]?.children?.slice().reverse().map((element) => (
           <div key={element} className='pl-5 border border-l-red-500 border-transparent'>
-            <Comment commentId={element} dictionary={dictionary} replyFunc={replyFunc} likeFunc={likeFunc} />
+            <CommentChild commentId={element} dictionary={dictionary} replyFunc={replyFunc} likeFunc={likeFunc} />
           </div>
         ))
       }
@@ -42,7 +42,7 @@ const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, repl
   )
 }
 
-export default function Garage({ postId = "postId1" } = {}) {                     // Main hero *********************************************************************
+export default function Comment({ postId = "postId1" } = {}) {                     // Main hero *********************************************************************
   const { authenticated, loading, userObj } = useAuthentication()
   const [reqRender, setReqRender] = useState(false)
   const [dictionary, setDictionary] = useState({});
@@ -204,7 +204,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
     <>
       {(
         <div>
-          <Comment commentId={"0"} dictionary={dictionary} comment={comment} setComment={setComment} commentFunc={commentFunc} replyFunc={replyFunc} likeFunc={likeFunc} />
+          <CommentChild commentId={"0"} dictionary={dictionary} comment={comment} setComment={setComment} commentFunc={commentFunc} replyFunc={replyFunc} likeFunc={likeFunc} />
         </div>
       )}
       {loading && (<>loading...</>)}

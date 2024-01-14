@@ -4,6 +4,7 @@ import { read } from '../Functions/read';
 import Navbar2 from '../Navbar2';
 import useAuthentication from '../Hook/useAuthenticate';
 import EditorReadOnly from '../UtilityComponents/EditorjsReadOnly/EditorReadOnly'
+import Comment from '../Comment/Comment';
 
 
 export default function PublicPosts({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
@@ -170,6 +171,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
             {focusedData.data.heading}
           </div>
           <EditorReadOnly data={focusedData.data} />
+          <Comment />
         </>
       )}
     </>
