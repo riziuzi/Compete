@@ -62,7 +62,8 @@ export default function BlogCard1({ index = null, data = null, isProfile = false
               <div onClick={() => { handleShowLikes() }} className="Likes w-10 text-skin-text200 hover:cursor-pointer">L: {data.likes.length || 0}</div>
               <div onClick={() => { createLike(data._id, userObj) }} className="GiveHeart">giveHeart</div>
             </div>
-            <div className="Save w-10 text-skin-text200">Saves : 0</div>
+            <div className="Save w-16 text-skin-text200">Saves : 0</div>
+
           </div>
           <div className='interactedProfiles text-skin-text200'>rizi, userId1</div>
         </div>
