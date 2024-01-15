@@ -23,7 +23,7 @@ export default function Navbar2() {
             {renderNavItem("Resources", "/resource")}
             {loading ? renderNavItem('...Loading', '/profile') :
                 authenticated ? renderNavItem(userObj.userId, '/profile') :
-                    renderNavItem('Login', '/userauth')
+                    renderNavItem('Login', '/signin')
             }
             {renderNavItem("About", "/about")}
             </div>
