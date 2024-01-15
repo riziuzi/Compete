@@ -42,7 +42,7 @@ const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc,
   )
 }
 
-export default function Comment({ postId = "postId1" } = {}) {                     // Main hero *********************************************************************
+export default function Comment({ postId = "postId1"} = {}) {                     // Main hero *********************************************************************
   const { authenticated, loading, userObj } = useAuthentication()
   const [reqRender, setReqRender] = useState(false)
   const [dictionary, setDictionary] = useState({});
@@ -51,7 +51,7 @@ export default function Comment({ postId = "postId1" } = {}) {                  
   useEffect(() => {
     const fetchData = async () => {                                       // future: optimize by just loading the changed Comment state, by sending this power to each individual comment??
       try {
-        const response = await fetch("http://localhost:3010/load-comment?postId=postId1", {
+        const response = await fetch(`http://localhost:3010/load-comment?postId=${postId}`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json'

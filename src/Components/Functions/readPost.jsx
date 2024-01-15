@@ -1,4 +1,4 @@
-export const read = async ({ defaultLimit=20, isprivate=false, userId="userId1", skipLastId=""}, signal) => {
+export const readPost = async ({ defaultLimit=20, isprivate=false, userId="userId1", skipLastId=""}, signal) => {
     const controller = new AbortController();
     const fetchSignal = signal || controller.signal;
   

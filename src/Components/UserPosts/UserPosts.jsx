@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BlogCard2 from '../UtilityComponents/BlogCards/BlogCard2';
-import { read } from '../Functions/read';
+import { readPost } from '../Functions/readPost';
 
 export default function Blog({ userId = "userId1", isprivate = true, defaultLimit = 10 } = {}) {
   const [Blogs, setBlogs] = useState([]);
@@ -11,7 +11,7 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     const signal = controller.signal;
     const fetchData = async () => {
       try {
-        const newData = await read({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);
+        const newData = await readPost({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);
         newData && setBlogs((prevBlogs) => [...prevBlogs, ...newData]);
         console.log(newData)
       } catch (error) {

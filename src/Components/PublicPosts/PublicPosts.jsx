@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from '../UtilityComponents/BlogCards/BlogCard1';
-import { read } from '../Functions/read';
+import BlogCard1 from '../UtilityComponents/BlogCards/BlogCard1';
+import { readPost } from '../Functions/readPost';
+import { readCommentAndPostLikes } from '../Functions/readCommentAndPostLikes';
 import Navbar2 from '../Navbar2';
 import useAuthentication from '../Hook/useAuthenticate';
 import EditorReadOnly from '../UtilityComponents/EditorjsReadOnly/EditorReadOnly'
 import Comment from '../Comment/Comment';
+import { mergeCommentsAndLikes } from '../Functions/mergeCommentsAndLikes';
 
 
 export default function PublicPosts({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
+  const [reqRender, setReqRender] = useState(false)
   const { authenticated, loading, userObj } = useAuthentication()
   const [focusedData, setFocusedData] = useState(null)
-  const [Blogs, setBlogs] = useState([]);
+  const [Blogs, setBlogs] = useState([]);               // Blogs = postDatas + CommentDatas
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
     const fetchData = async () => {
       try {
-        const newData = await read({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);       // apply the skip last id part here (when doing infinite loading)
-        newData && setBlogs((prevBlogs) => [...prevBlogs, ...newData]);             // always remember this, newData might be undefined
+        const newData = await readPost({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);       // apply the skip last id part here (when doing infinite loading)
+        const postIds = await newData.map(element => element._id);
+        const newCommentsAndPostLikes = await readCommentAndPostLikes({postIds:postIds})
+        const mergedData = mergeCommentsAndLikes(newData,newCommentsAndPostLikes)
+        console.log(postIds);
+        mergedData && setBlogs((prevBlogs) => [...prevBlogs, ...mergedData]);             // always remember this, newData might be undefined
+
       }
       catch (error) {
         console.log(error)
@@ -29,7 +37,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
       setBlogs([])          // whenever the useEffect is repeated (due to mounting and unmounting of whole Blog component)
     };
 
-  }, [userId]);
+  }, [userId, reqRender]);
   const handleShow = (data) => {
     if (focusedData === null) {
       console.log(data)
@@ -43,7 +51,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
         <div className='main_container flex justify-center items-start'>
           <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  sm:flex'>
             <div className="first_left px-6 py-3 felx flex-col bg-skin-bg200 shadow-2xl">
-              {authenticated ? (<div className="IfLoggedIn">
+              {!loading?(authenticated ? (<div className="IfLoggedIn">
                 <a href="/createcontent">
                   <button className="Post rounded-3xl font-sans font-bold text-xl w-full bg-skin-primary200 text-text py-5">
                     Post
@@ -56,7 +64,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
                   <div className='left1 my-1 text-skin-text200 text-sm'>Share ideas, ask questions, and stay updated.</div>
                   <button className="create_account h-9 w-full my-1 bg-skin-primary100"><a className='text-skin-text100 hover:cursor-pointer hover:no-underline' href="/signup">Create Account</a></button>
                   <div className='dummy w-full justify-center my-1 flex'><a href="/signin" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div>
-                </div>)}
+                </div>)):(<>Loading...</>)}
             </div>
             <br />
             <div className="left2 px-6 py-3 bg-skin-bg200 flex flex-col">
@@ -96,7 +104,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
               // in map, every tag should also be provided with a unique key
               <div className='blogCard bg-skin-bg200 px-6 py-6 my-5' key={index}>
                 <button onClick={() => { handleShow(data) }}>Show</button>
-                <BlogCard key={index} index={index + 1} data={data} handleShow={handleShow}/>
+                <BlogCard1 key={index} index={index + 1} data={data} handleShow={handleShow} userObj={userObj} setReqRender={setReqRender}/>
               </div>
             ))}
             {/* <div className=''>                                      why is this automatically creating a a text allign-center on all texts????
@@ -168,10 +176,11 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
         <>
           <button onClick={handleShow} className='text-skin-text100 font-sans font-bold bg-skin-bg200 p-2 m-3 rounded-2xl'>Back</button>
           <div className="header rounded-lg shadow-2xl shadow-blue-900 text-center text-skin-text100 text-6xl w-5/6 font-bold h-32 py-5 my-3 bg-skin-bg200 mx-auto" >
+            {console.log(focusedData)}
             {focusedData.data.heading}
           </div>
           <EditorReadOnly data={focusedData.data} />
-          <Comment />
+          <Comment postId={focusedData._id}/>                                       
         </>
       )}
     </>
@@ -179,3 +188,5 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
 }
 
 // issue: the color is superimposed by the color pallet used by Editor
+// issue: the <Comment postId={focusedData._id}/> at the bottom section is redundantly calling the load-comment api, and load-comments has already been called in the parent
+// soln: provide an if(data is provided) condition to make no fetch if a parent has passed a data to jsut show and do other CUD operations
