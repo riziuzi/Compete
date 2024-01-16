@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <div><Disclaimer /></div>
   },
   {
-    path: "/resource/createcontent",
+    path: "/createcontent",
     element: <div><CreateContent /></div>
   },
   {

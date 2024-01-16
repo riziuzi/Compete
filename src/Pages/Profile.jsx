@@ -4,9 +4,10 @@ import Footer from '../Components/Footer'
 import useAuthentication from '../Components/Hook/useAuthenticate'
 import UserPosts from '../Components/UserPosts/UserPosts'
 import Navbar2 from '../Components/Navbar2'
+import {onep0} from '../apiConfig'
 
 const read_user = async (userId) => {
-    const res = await fetch(`http://localhost:3005/read-user?userId=${userId}`, {
+    const res = await fetch(`${onep0}/read-user?userId=${userId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -80,6 +81,11 @@ export default function Profile() {
                                 {highlightText("History", option)}
                             </button>
                         </div>
+                    </div>
+                    <div className='w-full flex justify-center'>
+                        <a href="/createcontent" className="Post rounded-3xl hover:cursor-pointer hover:bg-slate-600 font-sans text-center font-bold text-xl w-5/6 bg-skin-primary200 text-text py-3">
+                            Post
+                        </a>
                     </div>
                     <div className="SettingsLogout flex flex-col ml-10">
                         <div className="break w-full my-1 flex -ml-5">
