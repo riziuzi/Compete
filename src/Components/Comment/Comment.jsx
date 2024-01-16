@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import useAuthentication from '../Hook/useAuthenticate'
+import {threep0} from '../../apiConfig'
 // import { Data } from './GarageData'
 
 const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
@@ -51,7 +52,7 @@ export default function Comment({ postId = "postId1"} = {}) {                   
   useEffect(() => {
     const fetchData = async () => {                                       // future: optimize by just loading the changed Comment state, by sending this power to each individual comment??
       try {
-        const response = await fetch(`http://localhost:3010/load-comment?postId=${postId}`, {
+        const response = await fetch(`${threep0}/load-comment?postId=${postId}`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json'
@@ -124,7 +125,7 @@ export default function Comment({ postId = "postId1"} = {}) {                   
       userId: userObj.userId,
       message: message
     }
-    await fetch("http://localhost:3010/create-comment", {
+    await fetch(`${threep0}/create-comment`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -153,7 +154,7 @@ export default function Comment({ postId = "postId1"} = {}) {                   
       newLike: newLike,
       newChild: newChild
     }
-    await fetch("http://localhost:3010/update-comment", {
+    await fetch(`${threep0}/update-comment`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -181,7 +182,7 @@ export default function Comment({ postId = "postId1"} = {}) {                   
       userId: userObj.userId,
       commentId: commentId
     }
-    await fetch("http://localhost:3010/create-like", {
+    await fetch(`${threep0}/create-like`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

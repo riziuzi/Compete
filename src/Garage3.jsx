@@ -5,6 +5,7 @@ import { useEffect, useState,useRef } from "react";
 import { redTheme } from "./GarageBlockNote";
 import useAuthentication from './Components/Hook/useAuthenticate';
 import { useNavigate } from 'react-router-dom';
+import {twop0, onep0} from './apiConfig'
 
 const data1 = []
 
@@ -50,7 +51,7 @@ export default function Garage() {
         console.log(data)
         const postEndpoint = postId === null ? 'create-post' : `update-post`;
         const postBody = postId === null ? { data: data, userId: userObj.userId } : { postId: postId, data: data, userId: userObj.userId };
-        fetch(`http://localhost:3002/${postEndpoint}`, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify(postBody) })
+        fetch(`${twop0}/${postEndpoint}`, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify(postBody) })
             .then((response) => {
                 if (!response.ok) { throw new Error(`HTTP error! Status: ${response.status}`) }
                 return response.json();
@@ -58,7 +59,7 @@ export default function Garage() {
             .then((responseData) => {
                 postId===null && setPostId(responseData.postId)
                 if (postId === null) {
-                    fetch('http://localhost:3005/update-user', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ userId: userObj.userId, private_post_id: responseData.postId }) })         // 3001
+                    fetch(`${onep0}/update-user`, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ userId: userObj.userId, private_post_id: responseData.postId }) })         // 3001
                         .then((response) => response.json())
                         .then((updateResponse) => {
                             console.log('User update response:', updateResponse);

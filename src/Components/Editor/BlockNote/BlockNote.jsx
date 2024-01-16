@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { redTheme } from "./GarageBlockNote";
 import useAuthentication from '../../Hook/useAuthenticate';
 import { useNavigate } from 'react-router-dom';
+import {twop0, onep0} from '../../../apiConfig'
 
 const data1 = []
 
@@ -55,7 +56,7 @@ export default function BlockNote() {
             const postEndpoint = postId === null ? 'create-post' : `update-post`;
             const postBody = postId === null ? { data: data, userId: userObj.userId } : { postId: postId, data: data, userId: userObj.userId };
     
-            const response = await fetch(`http://localhost:3002/${postEndpoint}`, {
+            const response = await fetch(`${twop0}/${postEndpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(postBody),
@@ -70,7 +71,7 @@ export default function BlockNote() {
             if (postId === null) {
                 setPostId(responseData.postId);
     
-                const updateResponse = await fetch('http://localhost:3005/update-user', {
+                const updateResponse = await fetch(`${onep0}/update-user`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: userObj.userId, private_post_id: responseData.postId }),

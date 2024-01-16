@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {threep0} from '../../../apiConfig'
 
 export default function BlogCard1({ index = null, data = null, isProfile = false, handleShow, userObj=null, setReqRender} = {}) {
   const [commentCount, setCommentCount] = useState(0)
@@ -11,7 +12,7 @@ export default function BlogCard1({ index = null, data = null, isProfile = false
       userId: userObj.userId,
       postId: postId
     }
-    await fetch("http://localhost:3010/create-like", {
+    await fetch(`${threep0}/create-like`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

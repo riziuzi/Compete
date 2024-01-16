@@ -4,9 +4,10 @@ import Footer from '../Components/Footer'
 import useAuthentication from '../Components/Hook/useAuthenticate'
 import UserPosts from '../Components/UserPosts/UserPosts'
 import Navbar2 from '../Components/Navbar2'
+import {onep0} from '../apiConfig'
 
 const read_user = async (userId) => {
-    const res = await fetch(`http://localhost:3005/read-user?userId=${userId}`, {
+    const res = await fetch(`${onep0}/read-user?userId=${userId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

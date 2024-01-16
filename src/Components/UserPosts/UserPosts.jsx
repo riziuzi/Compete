@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BlogCard2 from '../UtilityComponents/BlogCards/BlogCard2';
 import { readPost } from '../Functions/readPost';
+import {twop0} from '../../apiConfig'
 
 export default function Blog({ userId = "userId1", isprivate = true, defaultLimit = 10 } = {}) {
   const [Blogs, setBlogs] = useState([]);
@@ -33,7 +34,7 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     // Disable the button associated with the post
     setDisabledButtons((prevButtons) => [...prevButtons, index]);
 
-    fetch(`http://localhost:3002/make-${isprivate ? `public` : `private`}`,
+    fetch(`${twop0}/make-${isprivate ? `public` : `private`}`,
       {
         method: "POST",
         headers: {

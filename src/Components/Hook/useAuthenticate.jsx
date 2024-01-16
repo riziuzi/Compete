@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {zerop0} from '../../apiConfig'
 
 const useAuthentication = ({ failNavigateTo = null, successNavigateTo = null, dependencies = [] } = {}) => {      // this is how a default object value is passed : if nothing passed, then default object is empty {}, then default values are applied (I dont know how)
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,7 +19,7 @@ const useAuthentication = ({ failNavigateTo = null, successNavigateTo = null, de
         return;
       }
 
-      const response = await axios.get('http://localhost:3001/protected', {
+      const response = await axios.get(`${zerop0}/protected`, {
         withCredentials: true,
         headers: {
           Authorization: token,

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {zerop0, onep0} from '../../apiConfig'
 
 function SignUpForm() {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ function SignUpForm() {
       }
     }
     if (error.length === 0) {
-      fetch("http://localhost:3001/register", {
+      fetch(`${zerop0}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ function SignUpForm() {
         })
         .then((res) => {
           console.log(res)
-          fetch("http://localhost:3005/create-user", {               // 3001
+          fetch(`${onep0}/create-user`, {               // 3001
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -71,7 +72,7 @@ function SignUpForm() {
           })
             .then((data) => {
               console.log(data)
-              fetch("http://localhost:3001/login", {
+              fetch(`${zerop0}/login`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
