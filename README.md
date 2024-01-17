@@ -1,6 +1,16 @@
 # MindScape India
 
-Welcome to MindScape India, your personalized learning and resource-sharing platform for UPSC aspirants.
+Welcome to [MindScape India](https://compete-j0qb.onrender.com/) , your personalized learning and resource-sharing platform for UPSC aspirants.
+(Note: the link works, hosted on render with a free plan. It might happen that initial loading of Frontend, and other four servers (will be explained in upcoming documentation) takes some time (spin down after 15 min inactivity), so please be patient)
+
+For now, you can refer to following for understanding the four servers hosted for micro services:
+
+1) [Compete_JWT_server](https://github.com/riziuzi/Compete_JWT_server)
+2) [Compete_JWT_server](https://github.com/riziuzi/Compete_User_server)
+3) [Compete_Post_server](https://github.com/riziuzi/Compete_Post_server)
+4) [Compete_Post_Comment_server-](https://github.com/riziuzi/Compete_Post_Comment_server-)
+
+There is one another server for flask, but not hosted yet. ([Compete_Application_server](https://github.com/riziuzi/Compete_Application_server))
 
 ## Overview
 
