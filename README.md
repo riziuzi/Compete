@@ -14,7 +14,7 @@ There is one another server for flask, but not hosted yet. ([Compete_Application
 
 ## Overview
 
-MindScape India is designed to offer a comprehensive learning experience, collaborative resource-sharing, and a vibrant community-driven discussion forum for UPSC aspirants. 
+MindScape India is designed to offer a comprehensive learning experience, collaborative resource-sharing, and a vibrant community-driven discussion forum for UPSC aspirants. (See the [Welcome](https://compete-j0qb.onrender.com/welcome) page
 
 ## Contributing
 
