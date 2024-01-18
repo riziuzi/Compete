@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# MindScape India
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to [MindScape India](https://compete-j0qb.onrender.com/) , your personalized learning and resource-sharing platform for UPSC aspirants.
+(Note: the link works, hosted on render with a free plan. It might happen that initial loading of Frontend, and other four servers (will be explained in upcoming documentation) takes some time (spin down after 15 min inactivity), so please be patient)
 
-## Available Scripts
+For now, you can refer to following for understanding the four servers hosted for micro services:
 
-In the project directory, you can run:
+1) [Compete_JWT_server](https://github.com/riziuzi/Compete_JWT_server)
+2) [Compete_JWT_server](https://github.com/riziuzi/Compete_User_server)
+3) [Compete_Post_server](https://github.com/riziuzi/Compete_Post_server)
+4) [Compete_Post_Comment_server-](https://github.com/riziuzi/Compete_Post_Comment_server-)
 
-### `npm start`
+There is one another server for flask, but not hosted yet. ([Compete_Application_server](https://github.com/riziuzi/Compete_Application_server))
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MindScape India is designed to offer a comprehensive learning experience, collaborative resource-sharing, and a vibrant community-driven discussion forum for UPSC aspirants. (See the [Welcome](https://compete-j0qb.onrender.com/welcome) page)
 
-### `npm test`
+## Contributing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I encourage you to contribute to the MindScape India community by sharing your study materials, insights, and participating in discussions. Your contributions enrich the learning experience for everyone.
 
-### `npm run build`
+## Project Progress and Roadmap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Initial Launch (Current)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Ongoing Improvements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Bug Fixes and Optimization:** Continuous efforts are underway to address any bugs and optimize the platform for a smoother user experience.
 
-### `npm run eject`
+### Future Roadmap
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Upcoming Features and Enhancements
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Personalized Learning Paths :** 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Advanced Quiz Modules :** 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Mentorship Programs :** 
 
-## Learn More
+4. **Resource Sharing:** 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Discussion Forum:** 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. **JournalAI:**
 
-### Code Splitting
+7. **Insights Hub:** 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+8. **FlashNews:** 
 
-### Analyzing the Bundle Size
+9. **Core Features Implementation:** 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+10. **Community Growth:** 
 
-### Making a Progressive Web App
+11. **User Feedback Integration:** 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+12. **Enhanced Documentation (Ongoing):** Continuously improving documentation to provide users and contributors with clear guidelines and support.
 
-### Advanced Configuration
+13. **User-Driven Features (Ongoing):** Prioritizing user feedback to implement features that directly address the needs and preferences of the MindScape India community.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### How You Can Contribute
 
-### Deployment
+I welcome contributions from developers, educators, and UPSC aspirants to achieve our goals and enhance MindScape India.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Stay Connected
 
-### `npm run build` fails to minify
+As I move forward, your feedback remains crucial. Reach out to me at [rishi18december@gmail.com] with your thoughts and suggestions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Feedback
+
+Have suggestions or feedback? I'd love to hear from you! Contact me at [rishi18december@gmail.com].
+
+## License
+
+This project is licensed under the BSD-2-Clause license - see the LICENSE.txt file for details.
+
+## Contributing
+
+Contributions are always welcome!
+
+
+## Roadmap
+
+- Will be provided soon
+
+
+## Author
+
+- [@riziuzi](https://www.github.com/riziuzi)
+
