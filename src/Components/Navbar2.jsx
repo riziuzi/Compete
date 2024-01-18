@@ -18,7 +18,7 @@ export default function Navbar2() {
                 <img className='hover:cursor-pointer' src="./img/dark.svg" alt="Logo" />
             </a>
             <div className="items w-1/3 flex">
-            {renderNavItem("Home", "/notFound")}
+            {renderNavItem("Home", "/welcome")}
             {renderNavItem("JournalAI", "/JournalAI")}
             {renderNavItem("Resources", "/resource")}
             {loading ? renderNavItem('...Loading', '/profile') :
