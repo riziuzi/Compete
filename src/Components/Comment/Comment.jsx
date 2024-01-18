@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import useAuthentication from '../Hook/useAuthenticate'
+import {threep0} from '../../apiConfig'
 // import { Data } from './GarageData'
 
-const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
+const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
   const [replyBoxReveal, setReplyBoxReveal] = useState(false)
   const [reply, setReply] = useState("")
 
@@ -34,7 +35,7 @@ const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, repl
       {
         dictionary[commentId]?.children?.slice().reverse().map((element) => (
           <div key={element} className='pl-5 border border-l-red-500 border-transparent'>
-            <Comment commentId={element} dictionary={dictionary} replyFunc={replyFunc} likeFunc={likeFunc} />
+            <CommentChild commentId={element} dictionary={dictionary} replyFunc={replyFunc} likeFunc={likeFunc} />
           </div>
         ))
       }
@@ -42,7 +43,7 @@ const Comment = ({ commentId, dictionary, comment, setComment, commentFunc, repl
   )
 }
 
-export default function Garage({ postId = "postId1" } = {}) {                     // Main hero *********************************************************************
+export default function Comment({ postId = "postId1"} = {}) {                     // Main hero *********************************************************************
   const { authenticated, loading, userObj } = useAuthentication()
   const [reqRender, setReqRender] = useState(false)
   const [dictionary, setDictionary] = useState({});
@@ -51,7 +52,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
   useEffect(() => {
     const fetchData = async () => {                                       // future: optimize by just loading the changed Comment state, by sending this power to each individual comment??
       try {
-        const response = await fetch("http://localhost:3010/load-comment?postId=postId1", {
+        const response = await fetch(`${threep0}/load-comment?postId=${postId}`, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json'
@@ -124,7 +125,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
       userId: userObj.userId,
       message: message
     }
-    await fetch("http://localhost:3010/create-comment", {
+    await fetch(`${threep0}/create-comment`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -153,7 +154,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
       newLike: newLike,
       newChild: newChild
     }
-    await fetch("http://localhost:3010/update-comment", {
+    await fetch(`${threep0}/update-comment`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -181,7 +182,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
       userId: userObj.userId,
       commentId: commentId
     }
-    await fetch("http://localhost:3010/create-like", {
+    await fetch(`${threep0}/create-like`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -204,7 +205,7 @@ export default function Garage({ postId = "postId1" } = {}) {                   
     <>
       {(
         <div>
-          <Comment commentId={"0"} dictionary={dictionary} comment={comment} setComment={setComment} commentFunc={commentFunc} replyFunc={replyFunc} likeFunc={likeFunc} />
+          <CommentChild commentId={"0"} dictionary={dictionary} comment={comment} setComment={setComment} commentFunc={commentFunc} replyFunc={replyFunc} likeFunc={likeFunc} />
         </div>
       )}
       {loading && (<>loading...</>)}

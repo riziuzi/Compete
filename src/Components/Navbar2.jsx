@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useAuthenticate from "./Hook/useAuthenticate"
 
-export default function Navbar() {
+export default function Navbar2() {
     const [handle, sethandle] = useState()
     const { authenticated, loading, userObj } = useAuthenticate()
     const renderNavItem = (text, link) => (
@@ -18,12 +18,12 @@ export default function Navbar() {
                 <img className='hover:cursor-pointer' src="./img/dark.svg" alt="Logo" />
             </a>
             <div className="items w-1/3 flex">
-            {renderNavItem("Home", "/notFound")}
+            {renderNavItem("Home", "/welcome")}
             {renderNavItem("JournalAI", "/JournalAI")}
             {renderNavItem("Resources", "/resource")}
             {loading ? renderNavItem('...Loading', '/profile') :
                 authenticated ? renderNavItem(userObj.userId, '/profile') :
-                    renderNavItem('Login', '/userauth')
+                    renderNavItem('Login', '/signin')
             }
             {renderNavItem("About", "/about")}
             </div>

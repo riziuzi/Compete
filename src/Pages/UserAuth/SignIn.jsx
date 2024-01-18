@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import useAuthentication from "../../Components/Hook/useAuthenticate";
+import {zerop0} from '../../apiConfig'
 
-function SignInForm({ setIsLogin }) {
+function SignInForm() {
   const navigate = useNavigate();
   const { authenticated, loading, userObj } = useAuthentication({ successNavigateTo: '/profile' })
   const [state, setState] = React.useState({
@@ -27,7 +28,7 @@ function SignInForm({ setIsLogin }) {
       return;
     }
 
-    fetch("http://localhost:3001/login", {
+    fetch(`${zerop0}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -73,7 +74,7 @@ function SignInForm({ setIsLogin }) {
                   <input type="text" name="userId" value={state.userId} onChange={handleChange} placeholder="UserId" className='rounded-2xl my-2 px-2 py-1' />
                   <input type="password" name="password" value={state.password} onChange={handleChange} placeholder="Password" className='rounded-2xl px-2  py-1' />
                   <button className='bg-skin-primary300 py-1 mt-4 rounded-2xl'>Let's go</button>
-                  <a onClick={() => { setIsLogin(prev => !prev) }} className='text-sm hover:cursor-pointer text-cyan-100 mt-10'>Got no account? Register here.</a>
+                  <a href="/signup" className='text-sm hover:cursor-pointer text-cyan-100 mt-10'>Got no account? Register here.</a>
                 </form>
               </div>
             </div>

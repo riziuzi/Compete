@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from '../UtilityComponents/BlogCard/BlogCard';
-import { read } from '../Functions/read';
+import BlogCard2 from '../UtilityComponents/BlogCards/BlogCard2';
+import { readPost } from '../Functions/readPost';
+import {twop0} from '../../apiConfig'
 
 export default function Blog({ userId = "userId1", isprivate = true, defaultLimit = 10 } = {}) {
   const [Blogs, setBlogs] = useState([]);
@@ -11,7 +12,7 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     const signal = controller.signal;
     const fetchData = async () => {
       try {
-        const newData = await read({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);
+        const newData = await readPost({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);
         newData && setBlogs((prevBlogs) => [...prevBlogs, ...newData]);
         console.log(newData)
       } catch (error) {
@@ -33,7 +34,7 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     // Disable the button associated with the post
     setDisabledButtons((prevButtons) => [...prevButtons, index]);
 
-    fetch(`http://localhost:3002/make-${isprivate ? `public` : `private`}`,
+    fetch(`${twop0}/make-${isprivate ? `public` : `private`}`,
       {
         method: "POST",
         headers: {
@@ -62,8 +63,8 @@ export default function Blog({ userId = "userId1", isprivate = true, defaultLimi
     <>
       {Blogs.map((data, index) => (
         <div key={index}>
-          <div className='UserPosts bg-skin-bg200 p-5'>
-            <BlogCard key={index} index={index + 1} data={data} isProfile={true} />
+          <div className='UserPosts border border-green-600 bg-skin-bg200 p-5'>
+            <BlogCard2 key={index} index={index + 1} data={data} isProfile={true} />
             <button
               className='MakePrivate bg-skin-primary100 p-2 text-sm font-sans font-bold text-skin-text200'
               onClick={() => makePPHandler(data._id, index)}
