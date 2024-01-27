@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import BlogCard1 from '../UtilityComponents/BlogCards/BlogCard1';
 import { readPost } from '../Functions/readPost';
 import { readCommentAndPostLikes } from '../Functions/readCommentAndPostLikes';
-import Navbar2 from '../Navbar2';
 import useAuthentication from '../Hook/useAuthenticate';
 import EditorReadOnly from '../UtilityComponents/EditorjsReadOnly/EditorReadOnly'
 import Comment from '../Comment/Comment';
 import { mergeCommentsAndLikes } from '../Functions/mergeCommentsAndLikes';
+import BlogCard1_Skeleton from '../Skeletons/BlogCard1_Skeleton';
 
 
 export default function PublicPosts({ userId = "", isprivate = false, defaultLimit = 10 } = {}) {
+  //loadings
+  const [blogLoading, setblogLoading] = useState(false)
   const [reqRender, setReqRender] = useState(false)
   const { authenticated, loading, userObj } = useAuthentication()
   const [focusedData, setFocusedData] = useState(null)
@@ -19,16 +21,18 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
     const signal = controller.signal;
     const fetchData = async () => {
       try {
+        setblogLoading(true)
         const newData = await readPost({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);       // apply the skip last id part here (when doing infinite loading)
         const postIds = await newData.map(element => element._id);
         const newCommentsAndPostLikes = await readCommentAndPostLikes({postIds:postIds})
         const mergedData = mergeCommentsAndLikes(newData,newCommentsAndPostLikes)
         console.log(postIds);
         mergedData && setBlogs((prevBlogs) => [...prevBlogs, ...mergedData]);             // always remember this, newData might be undefined
-
+        setblogLoading(false)
       }
       catch (error) {
         console.log(error)
+        setblogLoading(false)
       }
     };
     fetchData();
@@ -107,6 +111,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
                 <BlogCard1 key={index} index={index + 1} data={data} handleShow={handleShow} userObj={userObj} setReqRender={setReqRender}/>
               </div>
             ))}
+            {blogLoading?(<>{Array(3).fill(0).map((d,index)=>(<div key={index} className='blogCard bg-skin-bg200 px-6 py-6 my-5'><BlogCard1_Skeleton /> {console.log(blogLoading)}</div>))}</>):(<></>)}
             {/* <div className=''>                                      why is this automatically creating a a text allign-center on all texts????
             <button className='card border border-red-600 h-52'>
               <div className='card_header border border-red-600 flex' >
