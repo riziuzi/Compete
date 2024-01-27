@@ -29,8 +29,8 @@ const useAuthentication = ({ failNavigateTo = null, successNavigateTo = null, de
       setuserObj(response.data.user);
       successNavigateTo && navigate(`${successNavigateTo}`, { replace: true })
     } catch (error) {
+      console.error('riziuzi: Authentication failed:', error);
       failNavigateTo && navigate(`${failNavigateTo}`, { replace: true })
-      console.error('riziuzi: Authentication failed:', error.response.data.message);
     } finally {
       setLoading(false);
     }
