@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Components/Navbar'
-import Footer from '../Components/Footer'
 import useAuthentication from '../Components/Hook/useAuthenticate'
 import UserPosts from '../Components/UserPosts/UserPosts'
-import Navbar2 from '../Components/Navbar2'
 import {onep0} from '../apiConfig'
+import { Nav2 } from '../Components/Navbars/Navbars'
 
 const read_user = async (userId) => {
     const res = await fetch(`${onep0}/read-user?userId=${userId}`, {
@@ -56,7 +54,7 @@ export default function Profile() {
     }
     return (
         <>
-            <Navbar2 />
+            <Nav2 />
 
             <div className="mainContainer flex justify-between">
                 <div className="col1 bg-skin-bg200 flex flex-col w-[14%] justify-between top-[56px] h-[calc(100vh-56px)] sticky overflow-y-scroll no-scrollbar overscroll-auto">

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Navbar2 from '../Components/Navbar2'
 import Task from '../Components/Task'
 import Footer from '../Components/Footer'
 import OlderTask from '../Components/OlderTask'
+import { Nav2 } from '../Components/Navbars/Navbars'
 
 export default function JournalAI() {
 
@@ -22,7 +22,7 @@ export default function JournalAI() {
 
   return (
     <>
-      <Navbar2 />
+      <Nav2 />
       <div className="mainContainer flex flex-col w-full justify-center items-center bg-skin-bg100 ">
         <div className="Task flex w-2/3 bg-skin-bg300 mt-10 rounded-lg">
           <Task />

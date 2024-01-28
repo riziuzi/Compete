@@ -53,7 +53,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
     <>
       {focusedData === null ? (
         <div className='main_container flex justify-center items-start'>
-          <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  sm:flex'>
+          <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  md:flex'>
             <div className="first_left px-6 py-3 felx flex-col bg-skin-bg200 shadow-2xl">
               {!loading?(authenticated ? (<div className="IfLoggedIn">
                 <a href="/createcontent">
@@ -111,7 +111,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
                 <BlogCard1 key={index} index={index + 1} data={data} handleShow={handleShow} userObj={userObj} setReqRender={setReqRender}/>
               </div>
             ))}
-            {blogLoading?(<>{Array(3).fill(0).map((d,index)=>(<div key={index} className='blogCard bg-skin-bg200 px-6 py-6 my-5'><BlogCard1_Skeleton /> {console.log(blogLoading)}</div>))}</>):(<></>)}
+            {blogLoading?(<>{Array(3).fill(0).map((d,index)=>(<div key={index} className='blogCard bg-skin-bg200 px-6 py-6 my-5 z-0'><BlogCard1_Skeleton /> {console.log(blogLoading)}</div>))}</>):(<></>)}
             {/* <div className=''>                                      why is this automatically creating a a text allign-center on all texts????
             <button className='card border border-red-600 h-52'>
               <div className='card_header border border-red-600 flex' >

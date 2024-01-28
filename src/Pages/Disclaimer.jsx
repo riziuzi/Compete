@@ -2,13 +2,13 @@
 
 import React from 'react';
 import './Disclaimer.css';
-import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import { Nav2 } from '../Components/Navbars/Navbars';
 
 const Disclaimer = () => {
   return (
     <>
-      <Navbar />
+      <Nav2 />
       <div className="disclaimer-container">
         <h1>Disclaimer</h1>
         <p>

@@ -1,11 +1,11 @@
-import useAuthenticate from "./Hook/useAuthenticate"
+import useAuthenticate from "../Hook/useAuthenticate"
 
-export default function Navbar2() {
+export default function NavbarSmall1() {
     const { authenticated, loading, userObj } = useAuthenticate()
     const renderNavItem = (text, link) => (
         <div className="navItem flex items-center px-3 py-2 justify-center hover:shadow-md hover:bg-skin-primary200 rounded-lg transition ease-in-out  duration-100">
-            <a className="navLink  text-base text-center font-bold text-skin-text200 whitespace-nowrap justify-center flex" href={link}>
-                {text==="Loading"?(<><div className="animate-pulse"> Loading </div></>):(text)}
+            <a className="navLink  text-base text-center font-bold text-skin-text200 whitespace-nowrap overflow-ellipsis border justify-center flex" href={link}>
+                {text==="Loading"?(<><div className="animate-pulse"> Loading </div></>):(<div className="overflow-hidden w-full">{text}</div>)}
             </a>
         </div>
     );
@@ -14,7 +14,7 @@ export default function Navbar2() {
             <a className="logo w-36" href="/welcome">
                 <img className='hover:cursor-pointer' src="./img/dark.svg" alt="Logo" />
             </a>
-            <div className="items w-1/3 flex justify-between">
+            <div className="items flex justify-between border">
                 {renderNavItem("Home", "/welcome")}
                 {renderNavItem("JournalAI", "/JournalAI")}
                 {renderNavItem("Resources", "/resource")}

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../Components/Navbar';
+import Navbar from '../Components/Navbars/Navbar2';
 import Footer from '../Components/Footer';
 import CountDown from '../Components/CountDown/CountDown';
 

@@ -3,7 +3,7 @@ import React from 'react'
 export default function BlogCard1_Skeleton({ isProfile = false } = {}) {
     return (
             <div className='card w-full  flex flex-col h-52 bg-skin-bg200 '>
-                <div className="animation animate-pulse">
+                <div className="animation animate-pulse z-0">
                     {isProfile ? (
                         <div className='card_header w-full items-center flex' >
                             <div className="name_postTime flex flex-col flex-1 ">

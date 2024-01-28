@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {zerop0, onep0} from '../../apiConfig'
+import { zerop0, onep0 } from '../../apiConfig'
+import LoadingDots from '../../Components/Skeletons/LoadingDots'
+import { Nav2 } from "../../Components/Navbars/Navbars";
 
 function SignUpForm() {
+  const [signUpSpinner, setsignUpSpinner] = useState(false)
   const navigate = useNavigate()
   const [state, setState] = React.useState({
     name: "",
@@ -17,9 +20,8 @@ function SignUpForm() {
     });
   };
 
-  const handleOnSubmit = evt => {
+  const handleOnSubmit = async evt => {
     evt.preventDefault();
-
     const { name, userId, password } = state;
     let error = ""
 
@@ -38,7 +40,8 @@ function SignUpForm() {
       }
     }
     if (error.length === 0) {
-      fetch(`${zerop0}/register`, {
+      await (async () => { setsignUpSpinner(true) })()                    // no use of wrapping setStateReact, state updates are asynchronously processed, but the state updater function itself isn't async so you can't wait for the update to happen
+      await fetch(`${zerop0}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,10 +51,12 @@ function SignUpForm() {
           "password": state.password
         })
       })
-        .then(res => {
+        .then(async res => {
           if (res.ok) {
             return res.json();
           } else {
+            const data = await res.json()
+            alert(data.message)
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
         })
@@ -63,57 +68,59 @@ function SignUpForm() {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ userId: state.userId, name: state.name })
-          }).then(res => {
+          }).then(async res => {
             if (res.ok) {
               return res.json();
             } else {
+              const data = await res.json()
+              alert(data.message)
               throw new Error(`HTTP error! Status: ${res.status}`);
             }
-          })
-            .then((data) => {
-              console.log(data)
-              fetch(`${zerop0}/login`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(state)
-              })
-                .then(res => {
-                  if (res.ok) {
-                    return res.json();
-                  } else {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                  }
-                })
-                .then((data) => {
-                  console.log(data);
-                  localStorage.setItem("token", data.token);
-                  navigate('/resource', { replace: true });
-                })
-                .catch(err => console.error(`Error occurred in fetching: ${err}`));
+          }).then((data) => {
+            console.log(data)
+            fetch(`${zerop0}/login`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(state)
             })
+              .then(async res => {
+                if (res.ok) {
+                  return res.json();
+                } else {
+                  const data = await res.json()
+                  alert(data.message)
+                  throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+              })
+              .then((data) => {
+                console.log(data);
+                localStorage.setItem("token", data.token);
+                navigate('/resource', { replace: true });
+              })
+              .catch(err => console.error(`Error occurred in fetching: ${err}`));
+          })
             .catch(err => `Error occured in fetching: ${err}`)
 
         })
         .catch(err => `Error occured in fetching: ${err}`)
+        .finally(() => { setsignUpSpinner(false) })
     }
     else {
       alert(`Error : ${error}`)
     }
+    setsignUpSpinner(false)
   };
 
   return (
     <>
-      <div className="rowOne mx-5 my-5 w-40 h-auto relative">
-        <a href="/">
-          <img className='hover:cursor-pointer' src="./img/dark.svg" alt="Logo" />
-        </a>
-      </div>
-      <div className=' rowTwo py-10 flex justify-center w-full'>
-        <div className='priamry shadow-2xl bg-skin-primary100 w-1/3 min-w-64 py-26 -mr-5 rounded-3xl flex flex-col justify-center items-center z-10'>
-          <div className=' my-4 text-3xl text-cyan-100 md:-ml-28'>Register</div>
-          <div className=' my-4 text-sm text-cyan-100 max-w-56 ml-10 md:-ml-2 overflow-hidden z-0'>Register your account with name, unique userId and strong password</div>
+      <Nav2 />
+      <div className=' rowTwo flex justify-center w-full'>
+        <div className='priamry shadow-2xl bg-skin-primary100 w-1/2 md:w-1/3 min-w-64 -mr-5 rounded-3xl flex flex-col justify-center items-center z-10'>
+          <div className=' my-4 text-2xl text-cyan-100 md:-ml-36'>Register</div>
+          <div className=' my-4 hidden md:flex text-sm text-cyan-100 max-w-56 ml-10 md:-ml-2 overflow-hidden z-0'>Register your account with name, unique userId and strong password</div>
+          <div className=' my-4 md:hidden text-sm text-cyan-100 max-w-56 z-0 w-full text-center'>Register your account</div>
           <div className='flex flex-col'>
             <form onSubmit={handleOnSubmit} className='flex flex-col max-w-96 items-center'>
               <div className='flex-wrap'>
@@ -121,7 +128,7 @@ function SignUpForm() {
               </div>
               <input type="text" name="userId" value={state.userId} onChange={handleChange} placeholder="Unique UserId" className='rounded-2xl bg-slate-100 focus:outline-none text-black focus:bg-slate-50 w-60 mt-2 px-2 py-1' />
               <input type="password" name="password" value={state.password} onChange={handleChange} placeholder="Create Password" className='rounded-2xl bg-slate-100 text-black focus:outline-none focus:bg-slate-50 w-60 mt-2 px-2  py-1' />
-              <button className='bg-skin-primary300 py-1 mt-4 w-60 rounded-2xl'>Let's go</button>
+              {signUpSpinner ? (<div className="bg-skin-primary300 mt-4 w-60 rounded-2xl"><div className="scale-[40%]"><LoadingDots /></div></div>) : (<button className='bg-skin-primary300 py-1 mt-4 w-60 rounded-2xl'><>Let's go</></button>)}
               <a href="/signin" className='text-sm hover:cursor-pointer text-cyan-100 mt-10 mb-24'>Got no account? Register here.</a>
             </form>
           </div>
@@ -131,6 +138,7 @@ function SignUpForm() {
         </div>
       </div>
     </>
+
   );
 }
 
