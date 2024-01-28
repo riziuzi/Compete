@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import EditorReadOnly from '../EditorjsReadOnly/EditorReadOnly'
 
 export default function BlogCard({ index = null, data = null, isProfile = false } = {}) {
-  const [dummy, setDummy] = useState(false)
+  const [showCard, setshowCard] = useState(false)
   const handleBlogOnClick = () => {
-    setDummy((prev) => !prev)
+    setshowCard((prev) => !prev)
   }
   console.log(data)
   return (
     <div>
-      {!dummy ? (
+      {!showCard ? (
         <div className='card w-full flex flex-col h-40' onClick={handleBlogOnClick}>
           {isProfile ? (
             <div className='card_header w-full items-center flex' >
@@ -35,7 +35,7 @@ export default function BlogCard({ index = null, data = null, isProfile = false 
               <div className="Likes w-10 text-skin-text200">C</div>
               <div className="Save w-10 text-skin-text200">C</div>
             </div>
-            <div className='interactedProfiles text-skin-text200'>rizi, userId1</div>
+            <div className='interactedProfiles text-skin-text200'>{data.userId} {data.coUserIds}</div>
           </div>
         </div>
       ) : (

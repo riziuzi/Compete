@@ -3,6 +3,7 @@ import useAuthentication from '../Components/Hook/useAuthenticate'
 import UserPosts from '../Components/UserPosts/UserPosts'
 import {onep0} from '../apiConfig'
 import { Nav2 } from '../Components/Navbars/Navbars'
+import LoadingDots from '../Components/Skeletons/LoadingDots'
 
 const read_user = async (userId) => {
     const res = await fetch(`${onep0}/read-user?userId=${userId}`, {
@@ -17,6 +18,7 @@ const read_user = async (userId) => {
 
 export default function Profile() {
     const [option, setOption] = useState("Public Posts")
+    const [profileLoading, setprofileLoading] = useState(true)
     const [userData, setUserData] = useState({})
     const [hookSignal, setHookSignal] = useState(false)
     const { authenticated, loading, userObj } = useAuthentication({ failNavigateTo: "/signin", dependencies: [hookSignal] })
@@ -27,6 +29,7 @@ export default function Profile() {
                     const data = await read_user(userObj.userId);
                     console.log(data.user.createdDate)
                     setUserData({ ...data.user });
+                    setprofileLoading(false)
                 } catch (error) {
                     console.error('Error fetching user data:', error);
                 }
@@ -55,7 +58,6 @@ export default function Profile() {
     return (
         <>
             <Nav2 />
-
             <div className="mainContainer flex justify-between">
                 <div className="col1 bg-skin-bg200 flex flex-col w-[14%] justify-between top-[56px] h-[calc(100vh-56px)] sticky overflow-y-scroll no-scrollbar overscroll-auto">
                     <div className="upper">
@@ -94,8 +96,8 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="col2 flex flex-col w-2/3 my-5">
-                    {option === "Public Posts" && (<UserPosts userId={userObj?.userId} isprivate={false} />)}
-                    {option === "Private Posts" && (<UserPosts userId={userObj?.userId} isprivate={true} />)}
+                    {option === "Public Posts" && !loading && (<UserPosts userId={userObj?.userId} isprivate={false} />)}
+                    {option === "Private Posts" && !loading && (<UserPosts userId={userObj?.userId} isprivate={true} />)}
                     {/* <div className="ContinueWatching flex flex-col">
             <div className="titleSeeAll flex justify-between">
             <div className="title">Continue Watching</div>
@@ -115,8 +117,8 @@ export default function Profile() {
                                 p
                             </div>
                         </div>
-                        <div className="name mt-4 font-sans font-bold text-skin-text100 text-base">{loading ? '...Loading' : userData?.profile?.name || 'Not Found'}</div>
-                        <div className="usernameCreatedOn mt-1 font-sans text-skin-text200 text-xs">{loading ? '...Loading' : userObj?.userId || 'Not Found'} • {userData.createdDate}</div>
+                        <div className="name mt-4 font-sans font-bold text-skin-text100 text-base">{profileLoading ? (<div className='scale-[20%]'><LoadingDots /></div>) : userData?.profile?.name || 'Not Found'}</div>
+                        <div className="usernameCreatedOn flex mt-1 font-sans text-skin-text200 text-xs">{profileLoading ? (<div className='scale-[20%]'><LoadingDots /></div>) : <>{userObj?.userId} • </> || 'Not Found'}{userData.createdDate}</div>
                         <div className="usernameCreatedOn  mt-3 flex w-full px-2 justify-between">
                             <div className="Posts font-sans font-bold text-skin-text100 text-sm">Posts</div>
                             <div className="Followers font-sans font-bold text-skin-text100 text-sm">Followers</div>

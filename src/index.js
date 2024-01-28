@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     element: <div><Resource /></div>,
   },
   {
-    path: "/footer/disclaimer",
+    path: "/disclaimer",
     element: <div><Disclaimer /></div>
   },
   {
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     element : <div><Profile /></div>
   },
   {
-    path : "/garage",
+    path : "rfc/garage",
     element : <div><Garage /></div>
   },
   {

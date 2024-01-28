@@ -115,8 +115,10 @@ function SignUpForm() {
 
   return (
     <>
-      <Nav2 />
-      <div className=' rowTwo flex justify-center w-full'>
+      <div className="relative z-20">
+        <Nav2 />
+      </div>
+      <div className=' rowTwo flex justify-center w-full mt-8'>
         <div className='priamry shadow-2xl bg-skin-primary100 w-1/2 md:w-1/3 min-w-64 -mr-5 rounded-3xl flex flex-col justify-center items-center z-10'>
           <div className=' my-4 text-2xl text-cyan-100 md:-ml-36'>Register</div>
           <div className=' my-4 hidden md:flex text-sm text-cyan-100 max-w-56 ml-10 md:-ml-2 overflow-hidden z-0'>Register your account with name, unique userId and strong password</div>

@@ -4,8 +4,10 @@ import { Nav2 } from '../Components/Navbars/Navbars'
 export default function Resource() {
   return (
     <>
-      <Nav2 />
-      <PublicPosts userId = "" isprivate = "false" defaultLimit=""/>
+      <div className="sticky top-0 overscroll-contain z-20">
+        <Nav2 />
+      </div>
+      <PublicPosts userId="" isprivate="false" defaultLimit="" />
     </>
   )
 }

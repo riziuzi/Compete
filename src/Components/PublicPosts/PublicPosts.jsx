@@ -24,8 +24,8 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
         setblogLoading(true)
         const newData = await readPost({ userId: userId, isprivate: isprivate, defaultLimit: defaultLimit }, signal);       // apply the skip last id part here (when doing infinite loading)
         const postIds = await newData.map(element => element._id);
-        const newCommentsAndPostLikes = await readCommentAndPostLikes({postIds:postIds})
-        const mergedData = mergeCommentsAndLikes(newData,newCommentsAndPostLikes)
+        const newCommentsAndPostLikes = await readCommentAndPostLikes({ postIds: postIds })
+        const mergedData = mergeCommentsAndLikes(newData, newCommentsAndPostLikes)
         console.log(postIds);
         mergedData && setBlogs((prevBlogs) => [...prevBlogs, ...mergedData]);             // always remember this, newData might be undefined
         setblogLoading(false)
@@ -55,7 +55,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
         <div className='main_container flex justify-center items-start'>
           <div className='leftSideBar w-1/5 mt-10 mr-5 top-[104px] h-[calc(100vh-104)] sticky overflow-y-scroll no-scrollbar overscroll-auto flex-col hidden  md:flex'>
             <div className="first_left px-6 py-3 felx flex-col bg-skin-bg200 shadow-2xl">
-              {!loading?(authenticated ? (<div className="IfLoggedIn">
+              {!loading ? (authenticated ? (<div className="IfLoggedIn">
                 <a href="/createcontent">
                   <button className="Post rounded-3xl font-sans font-bold text-xl w-full bg-skin-primary200 text-text py-5">
                     Post
@@ -68,7 +68,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
                   <div className='left1 my-1 text-skin-text200 text-sm'>Share ideas, ask questions, and stay updated.</div>
                   <button className="create_account h-9 w-full my-1 bg-skin-primary100"><a className='text-skin-text100 hover:cursor-pointer hover:no-underline' href="/signup">Create Account</a></button>
                   <div className='dummy w-full justify-center my-1 flex'><a href="/signin" className="login w-full text-skin-text100 hover:cursor-pointer hover:no-underline text-center">Login</a></div>
-                </div>)):(<>Loading...</>)}
+                </div>)) : (<>Loading...</>)}
             </div>
             <br />
             <div className="left2 px-6 py-3 bg-skin-bg200 flex flex-col">
@@ -107,11 +107,10 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
             {Blogs.map((data, index) => (
               // in map, every tag should also be provided with a unique key
               <div className='blogCard bg-skin-bg200 px-6 py-6 my-5' key={index}>
-                <button onClick={() => { handleShow(data) }}>Show</button>
-                <BlogCard1 key={index} index={index + 1} data={data} handleShow={handleShow} userObj={userObj} setReqRender={setReqRender}/>
+                <BlogCard1 key={index} index={index + 1} data={data} handleShow={handleShow} userObj={userObj} setReqRender={setReqRender} />
               </div>
             ))}
-            {blogLoading?(<>{Array(3).fill(0).map((d,index)=>(<div key={index} className='blogCard bg-skin-bg200 px-6 py-6 my-5 z-0'><BlogCard1_Skeleton /> {console.log(blogLoading)}</div>))}</>):(<></>)}
+            {blogLoading ? (<>{Array(3).fill(0).map((d, index) => (<div key={index} className='blogCard bg-skin-bg200 px-6 py-6 my-5 z-0'><BlogCard1_Skeleton /> {console.log(blogLoading)}</div>))}</>) : (<></>)}
             {/* <div className=''>                                      why is this automatically creating a a text allign-center on all texts????
             <button className='card border border-red-600 h-52'>
               <div className='card_header border border-red-600 flex' >
@@ -185,7 +184,9 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
             {focusedData.data.heading}
           </div>
           <EditorReadOnly data={focusedData.data} />
-          <Comment postId={focusedData._id}/>                                       
+          <div className="comments mx-5 flex justify-center my-10 pb-52">
+            <Comment postId={focusedData._id} />
+          </div>
         </>
       )}
     </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import useAuthentication from '../Hook/useAuthenticate'
-import {threep0} from '../../apiConfig'
+import { threep0 } from '../../apiConfig'
 // import { Data } from './GarageData'
 
 const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc, replyFunc, likeFunc }) => {
@@ -10,26 +10,28 @@ const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc,
   return (
     <>
       {commentId === "0" && (
-        <div>
-          <input value={comment} onChange={e => setComment(e.target.value)} type="text" placeholder='Enter your comment here' />
-          <button onClick={commentFunc}>Comment</button>
+        <div className='bg-skin-bg300 p-10 rounded-lg'>
+          <input className='rounded-sm ' value={comment} onChange={e => setComment(e.target.value)} type="text" placeholder='Enter your comment here' />
+          <button className='text-skin-text100 ml-5 ' onClick={commentFunc}>Comment</button>
         </div>
       )}
       {commentId !== "0" && (
         <>
-          {dictionary[commentId]?.message}
-          <button onClick={() => setReplyBoxReveal(prev => !prev)}> {replyBoxReveal ? `Revert` : `Reply`} </button>
+          <div className="message text-skin-text100">
+            {dictionary[commentId]?.message}
+          </div>
+          <button className='text-skin-text100' onClick={() => setReplyBoxReveal(prev => !prev)}> {replyBoxReveal ? `Revert` : `Reply`} </button>
           {replyBoxReveal && (
             <div>
               <input value={reply} onChange={e => setReply(e.target.value)} type="replybox" />
-              <button onClick={() => {
+              <button className='text-skin-text100' onClick={() => {
                 setReplyBoxReveal(prev => !prev)
                 setReply("")
                 replyFunc(reply, commentId)
               }}>Reply</button>
             </div>
           )}
-          <button onClick={() => { likeFunc(commentId) }} className='Likes'>Likes: {dictionary[commentId]?.likes.length}</button>
+          <button  onClick={() => { likeFunc(commentId) }} className='text-skin-text100 mx-1'>Likes: {dictionary[commentId]?.likes.length}</button>
         </>
       )}
       {
@@ -43,7 +45,7 @@ const CommentChild = ({ commentId, dictionary, comment, setComment, commentFunc,
   )
 }
 
-export default function Comment({ postId = "postId1"} = {}) {                     // Main hero *********************************************************************
+export default function Comment({ postId = "postId1" } = {}) {                     // Main hero *********************************************************************
   const { authenticated, loading, userObj } = useAuthentication()
   const [reqRender, setReqRender] = useState(false)
   const [dictionary, setDictionary] = useState({});
@@ -204,13 +206,10 @@ export default function Comment({ postId = "postId1"} = {}) {                   
   return (
     <>
       {(
-        <div>
+        <div className=' flex flex-col justify-center'>
           <CommentChild commentId={"0"} dictionary={dictionary} comment={comment} setComment={setComment} commentFunc={commentFunc} replyFunc={replyFunc} likeFunc={likeFunc} />
         </div>
       )}
-      {loading && (<>loading...</>)}
-      {authenticated && (<>{userObj.userId}</>)}
-      <button onClick={() => setDelet(prev => !prev)}>click : {delet}</button>
     </>
   );
 }                                                   // Main hero ends ************************************************************************************************

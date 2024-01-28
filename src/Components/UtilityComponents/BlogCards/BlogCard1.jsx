@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {threep0} from '../../../apiConfig'
 
 export default function BlogCard1({ index = null, data = null, isProfile = false, handleShow, userObj=null, setReqRender} = {}) {
+  console.log("hello",data)
   const [commentCount, setCommentCount] = useState(0)
   const createLike = async (postId, userObj) => {
     if(userObj===null)
@@ -54,7 +55,7 @@ export default function BlogCard1({ index = null, data = null, isProfile = false
           </div>
         )}
 
-        <a onClick={() => { handleShow(data) }} className='cardTitle my-3 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{data.data.heading}</a>
+        <a onClick={() => { handleShow(data) }} className='cardTitle my-3 h-16 hover:cursor-pointer hover:no-underline  text-2xl text-skin-text100 w-full multilineEllipsis'>{data.data.heading}</a>
         <div className='cardTags text-skin-text200 text-sm my-3 text-left w-full'>#UPSC #masti</div>
         <div className="interacations text-left w-full my-3 text-skin-text200 flex justify-between">
           <div className="commentsLikesSave flex">
@@ -66,7 +67,7 @@ export default function BlogCard1({ index = null, data = null, isProfile = false
             <div className="Save w-16 text-skin-text200">Saves : 0</div>
 
           </div>
-          <div className='interactedProfiles text-skin-text200'>rizi, userId1</div>
+          <div className='interactedProfiles text-skin-text200 whitespace-nowrap overflow-hidden overflow-ellipsis'>{data.userId} {data.coUserIds}</div>
         </div>
       </div>
     </div>

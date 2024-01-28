@@ -60,10 +60,12 @@ function SignInForm() {
 
   return (
     <>
-      <Nav2 />
+      <div className="relative z-20">
+        <Nav2 />
+      </div>
       {!loading && !authenticated && (
         <>
-          <div className='rowTwo flex justify-center w-full'>
+          <div className='rowTwo flex justify-center w-full mt-8'>
             <div className="secondary bg-skin-primary200 hidden items-center px-10 -mr-5 rounded-l-3xl flex-col md:flex">
               <div className='text-sm mt-20'><p className='text-cyan-100'>Welcome Back to MindScape India</p><p className='text-cyan-100'> – Where Diligence Meets Triumph.</p></div>
               <img src="./img/img_signin1.svg" alt="kid_Photo" className='w-64 h-auto mt-12 ml-0' />

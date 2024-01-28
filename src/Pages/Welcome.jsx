@@ -67,7 +67,7 @@ const Welcome = () => {
             <div className="tagline text-3xl font-sans font-bold text-skin-text100">The free and effective way to learn!</div>
             <dic className="userAuthButtons flex flex-col justify-center items-center">
               <a href="/signup"><button className="GetStarted w-64 my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-skin-primary300 rounded-xl">GET STARTED</button></a>
-              <a href="/userauth"><button className="GetStarted w-64  my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-transparent hover:shadow-2xl rounded-xl">I ALREADY HAVE AN ACCOUNT</button></a>
+              <a href="/signin"><button className="GetStarted w-64  my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-transparent hover:shadow-2xl rounded-xl">I ALREADY HAVE AN ACCOUNT</button></a>
             </dic>
           </div>
         </div>

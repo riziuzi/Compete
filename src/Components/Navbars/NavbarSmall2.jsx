@@ -12,7 +12,7 @@ export default function NavbarSmall2() {
         </div>
     );
     return (
-        <div className="header relative  bg-skin-bg200 flex flex-col items-center w-full h-20">
+        <div className="header bg-skin-bg200 flex flex-col items-center w-full h-20">
             <div className="header flex justify-center h-20 py-5 shadow-md w-full z-20">
                 <a className="logo " href="/welcome">
                     <img className='hover:cursor-pointer h-12' src="./img/dark.svg" alt="Logo" />
