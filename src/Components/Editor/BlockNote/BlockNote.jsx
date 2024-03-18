@@ -31,7 +31,7 @@ export default function BlockNote() {
                 class: "min-h-[calc(100vh-152px)] w-full"
             },
             blockGroup: {
-                class: "mx-16 my-16"
+                class: "lg:mx-16 mx-1 my-16"
             },
             blockContainer: {
                 class: "",
@@ -105,7 +105,7 @@ export default function BlockNote() {
                 />
                 <div className="dummy2 flex justify-center w-full ">
                     <div className="dummy w-full flex items-center justify-center  ">
-                        <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center w-[95%]" />
+                        <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center w-[99%]" />
                     </div>
                 </div>
             </div>

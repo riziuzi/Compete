@@ -103,7 +103,7 @@ export default function PublicPosts({ userId = "", isprivate = false, defaultLim
               </div>
             </div>
           </div>
-          <div className='mainBar my-5 min-h-full w-2/3'>
+          <div className='mainBar my-5 min-h-full w-11/12 lg:w-2/3'>
             {Blogs.map((data, index) => (
               // in map, every tag should also be provided with a unique key
               <div className='blogCard bg-skin-bg200 px-6 py-6 my-5' key={index}>

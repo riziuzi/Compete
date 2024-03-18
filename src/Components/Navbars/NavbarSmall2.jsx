@@ -4,6 +4,13 @@ import useAuthenticate from "../Hook/useAuthenticate"
 export default function NavbarSmall2() {
     const { authenticated, loading, userObj } = useAuthenticate()
     const [toggleMenu, settoggleMenu] = useState(false)
+    const [rotation, setRotation] = useState(0);
+
+    const handleClick = () => {
+        settoggleMenu(prev => !prev);
+        // Rotate the menu icon by 180 degrees when clicked
+        setRotation(rotation + 180);
+    };
     const renderNavItem = (text, link) => (
         <div className="navItem flex items-center px-3 py-2 justify-center hover:shadow-md hover:bg-skin-primary200 rounded-lg transition ease-in-out  duration-100">
             <a className="navLink  text-base text-center font-bold text-skin-text200 whitespace-nowrap overflow-ellipsis justify-center flex" href={link}>
@@ -17,8 +24,12 @@ export default function NavbarSmall2() {
                 <a className="logo " href="/welcome">
                     <img className='hover:cursor-pointer h-12' src="./img/dark.svg" alt="Logo" />
                 </a>
-                <div onClick={() => { settoggleMenu(prev => !prev) }} className="toggleMenu p-1 hover:cursor-pointer hover:scale-110 hover:shadow-md rounded-full right-[5%] top-5 absolute  z-20">
-                    {!toggleMenu ? (<>Nav</>) : (<>unNav</>)}
+                <div onClick={handleClick} className="toggleMenu p-1 hover:cursor-pointer hover:scale-110 hover:shadow-md rounded-full right-[5%] top-5 absolute z-20">
+                    <img
+                        src="./icon/navIcon.svg"
+                        alt="commentIcon"
+                        className={`w-5 mt-1 transition-transform transform ${toggleMenu ? 'rotate-180' : ''}`}
+                    />
                 </div>
             </div>
 

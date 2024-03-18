@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useAuthenticate from "../Hook/useAuthenticate"
 
 export default function Navbar1() {
-  const [handle, sethandle] = useState()
   const { authenticated, loading, userObj } = useAuthenticate()
   const renderNavItem = (text, link) => (
     <li className="nav-item ml-1">

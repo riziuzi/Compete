@@ -21,7 +21,7 @@ const EditorComponent = ({ index, data }) => {
                 class: "min-h-[calc(100vh-152px)] w-full"
             },
             blockGroup: {
-                class: "mx-16 my-16"
+                class: "lg:mx-36 mx-1 my-16"
             },
             blockContainer: {
                 class: "",
@@ -31,7 +31,7 @@ const EditorComponent = ({ index, data }) => {
 
     return (
         <div className="mainContainer bg-skin-bg100 flex flex-col items-center justify-center">
-            <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center w-[95%]" />
+            <BlockNoteView editor={editor} theme={redTheme} className="flex justify-center lg:w-[95%] w-[99%]" />
         </div>
     )
 
