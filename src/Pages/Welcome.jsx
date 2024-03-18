@@ -9,65 +9,20 @@ const Welcome = () => {
   const events_list = [{ "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" },
   { "dateValue": "10-19-2024", "timeValue": "12:30", "ampmValue": "pm", "eventName": "UPSC Mains" }]
   return (
-    // <div>
-    // <Navbar />
-    // <div className="home-container">
-    //   <section className="welcome-section">
-    //     <h1>Welcome to our platform</h1>
-    //     <p>
-    //       Empowering UPSC aspirants on their journey to success. Our platform is designed to provide a personalized and effective learning experience.
-    //     </p>
-    //   </section>
-
-    //   <section className="vision-section">
-    //     <h2>Our Vision</h2>
-    //     <p>
-    //       At Compete, we envision a future where every aspirant has access to quality resources, personalized study paths, and a supportive community to thrive in their UPSC preparation journey.
-    //     </p>
-    //   </section>
-
-    //   <section className="contribute-section">
-    //     <h2>How to Contribute</h2>
-    //     <p>
-    //       We welcome contributions from individuals passionate about education and technology. Here's how you can get involved:
-    //     </p>
-    //     <ul>
-    //       <li>
-    //         <strong>Code Contributions:</strong> Check out our GitHub repository at <Link to="https://github.com/riziuzi">GitHub Repository</Link> and submit pull requests for feature enhancements or bug fixes.
-    //       </li>
-    //       <li>
-    //         <strong>Feedback:</strong> Share your thoughts and suggestions with us. Your feedback helps us improve and better cater to the needs of UPSC aspirants.
-    //       </li>
-    //       <li>
-    //         <strong>Spread the Word:</strong> Help us reach more aspirants by sharing our platform with your network. Every new user contributes to our vibrant community.
-    //       </li>
-    //     </ul>
-    //   </section>
-    // </div>
-    // <div>
-    // {events_list.map((data,index)=>
-    // {
-    //   // console.log(data)
-    //   return <CountDown key={index} index={index} event_dict={data}/>
-    // })}
-    
-    // </div>
-    // <Footer />  
-    // </div>
     <>
       <div className="maincontainer flex flex-col w-full">
         <div className="header flex p-8 w-full  h-[80px] ">
           <a href="/">
-            <img src="./img/dark.svg" alt="" className="Logo h-16 w-auto  ml-16" />
+            <img src="./img/dark.svg" alt="" className="Logo h-16 w-auto ml-16" />
           </a>
         </div>
-        <div className="hero h-[calc(100vh-82px-50px)] bg-[url(../public/imgHome/starsHome.svg)] flex justify-center items-center">
-          <img src="./imgHome/EarthIconHome.svg" alt="" className="EarthIconHome mr-64" />
-          <div className="dummy flex flex-col mt-20 h-64 justify-between items-center">
-            <div className="tagline text-3xl font-sans font-bold text-skin-text100">The free and effective way to learn!</div>
-            <dic className="userAuthButtons flex flex-col justify-center items-center">
-              <a href="/signup"><button className="GetStarted w-64 my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-skin-primary300 rounded-xl">GET STARTED</button></a>
-              <a href="/signin"><button className="GetStarted w-64  my-1 p-2 text-sm font-bold font-sans text-skin-text100 bg-transparent hover:shadow-2xl rounded-xl">I ALREADY HAVE AN ACCOUNT</button></a>
+        <div className="hero h-[calc(100vh-82px-50px)] bg-[url(../public/imgHome/starsHome.svg)] flex lg:flex-row flex-col justify-center items-center">
+          <img src="./imgHome/EarthIconHome.svg" alt="" className="EarthIconHome lg:w-1/3 w-1/2 lg:mr-64 lg:mt-0 mt-24" />
+          <div className="dummy lg:mx-0 mx-5 lg:text-right text-center flex flex-col lg:mt-20 mt-5 h-64 lg:justify-between items-center">
+            <div className="tagline lg:text-3xl text-2xl font-sans font-bold text-skin-text100">The free and effective way to learn!</div>
+            <dic className="userAuthButtons lg:top-0 lg:mt-5 mt-10 flex flex-col justify-center items-center">
+              <a href="/signup"><button className="GetStarted lg:w-64 w-32 my-1 lg:p-2 p-5 text-sm font-bold font-sans text-skin-text100 bg-skin-primary300 lg:rounded-xl rounded-3xl">GET STARTED</button></a>
+              <a href="/signin"><button className="GetStarted lg:w-64 w-32 my-1 p-2 lg:text-sm text-xs font-bold font-sans text-skin-text100 bg-transparent hover:shadow-2xl rounded-xl">I ALREADY HAVE AN ACCOUNT</button></a>
             </dic>
           </div>
         </div>
@@ -87,16 +42,16 @@ const Welcome = () => {
                   </div>
                   <div className="content flex flex-col">
                     <div className="title text-1xl text-skin-text100 font-sans mb-2 font-bold">Effective and efficient</div>
-                    <div className="message text-sm text-skin-text200 font-sans">Experience the power of focused learning; MindScape India streamlines your UPSC preparation, making it not just effective but exceptionally efficient</div>
+                    <div className="message hidden lg:flex text-sm text-skin-text200 font-sans">Experience the power of focused learning; MindScape India streamlines your UPSC preparation, making it not just effective but exceptionally efficient</div>
                   </div>
                 </div>
                 <div className="Personalized h-40 flex items-start">
                   <div className="emoji mr-1">
-                  <img src="./icon/Tick.svg" alt="" className="fire flex w-[100px] h-auto" />
+                    <img src="./icon/Tick.svg" alt="" className="fire flex w-[100px] h-auto" />
                   </div>
                   <div className="content flex flex-col">
                     <div className="title text-1xl text-skin-text100 font-sans mb-2 font-bold">Personalized learning</div>
-                    <div className="message text-sm text-skin-text200 font-sans">Tailored to your aspirations, MindScape India offers personalized recommendations, guiding you through the vast sea of UPSC resources with pinpoint accuracy</div>
+                    <div className="message text-sm text-skin-text200 font-sans hidden lg:flex">Tailored to your aspirations, MindScape India offers personalized recommendations, guiding you through the vast sea of UPSC resources with pinpoint accuracy</div>
                   </div>
                 </div>
               </div>
@@ -106,20 +61,20 @@ const Welcome = () => {
               <div className="col3 col1 my-10 w-1/5">
                 <div className="StayMotivated h-40 mb-8 flex items-start">
                   <div className="emoji mr-1">
-                  <img src="./icon/Crown.svg" alt="" className="fire flex w-[100px] h-auto" />
+                    <img src="./icon/Crown.svg" alt="" className="fire flex w-[100px] h-auto" />
                   </div>
                   <div className="content flex flex-col">
                     <div className="title text-1xl text-skin-text100 font-sans mb-2 font-bold">Stay motivated</div>
-                    <div className="message text-sm text-skin-text200 font-sans">Stay inspired on your UPSC journey with MindScape India. Our motivational resources and supportive community ensure you're never alone in chasing your goals.</div>
+                    <div className="message text-sm text-skin-text200 font-sans hidden lg:flex">Stay inspired on your UPSC journey with MindScape India. Our motivational resources and supportive community ensure you're never alone in chasing your goals.</div>
                   </div>
                 </div>
                 <div className="Effective flex items-start">
                   <div className="emoji mr-1">
-                  <img src="./icon/HappyGirl.svg" alt="" className="fire flex w-[100px] h-auto" />
+                    <img src="./icon/HappyGirl.svg" alt="" className="fire flex w-[100px] h-auto" />
                   </div>
                   <div className="HaveFun h-40 flex flex-col">
                     <div className="title text-1xl text-skin-text100 font-sans mb-2 font-bold">Have fun with it!</div>
-                    <div className="message text-sm text-skin-text200 font-sans">Learning for UPSC can be enjoyable too! With MindScape India, explore interactive content, engage in discussions, and add a touch of fun to your serious exam preparations</div>
+                    <div className="message text-sm text-skin-text200 font-sans hidden lg:flex">Learning for UPSC can be enjoyable too! With MindScape India, explore interactive content, engage in discussions, and add a touch of fun to your serious exam preparations</div>
                   </div>
                 </div>
               </div>
@@ -135,7 +90,7 @@ const Welcome = () => {
               </div>
               <div className="content flex flex-col w-2/5 justify-center items-start">
                 <div className="title flex text-1xl mb-5 text-skin-text100 font-sans font-bold">Collaborative Learning: Enriching the MindScape India Community Together</div>
-                <div className="message flex text-sm mb-5 text-skin-text200 font-sans">Share your unique insights, tips, and resources to strengthen the MindScape India community. Your support enriches the MindScape India experience for everyone!</div>
+                <div className="message text-sm mb-5 text-skin-text200 font-sans hidden lg:flex">Share your unique insights, tips, and resources to strengthen the MindScape India community. Your support enriches the MindScape India experience for everyone!</div>
                 <a className="goto flex text-sm text-skin-primary200 hover:cursor-pointer hover:no-underline font-bold font-sans">READ COMMUNITY GUIDELINES</a>
               </div>
             </div>
@@ -146,7 +101,7 @@ const Welcome = () => {
           <div className="Android flex my-10 justify-center items-center">
             <div className="col1 flex flex-col  w-2/5 items-start justify-center">
               <div className="title flex text-1xl mb-5 text-skin-text100 font-sans font-bold">Learn anytime, anywhere.</div>
-              <div className="message flex text-sm mb-5 text-skin-text200 font-sans">Coming soon: MindScape India's Android app. Elevate your learning on the go and make the most of your breaks and commutes. Stay tuned for a seamless mobile education experience</div>
+              <div className="message text-sm mb-5 text-skin-text200 font-sans hidden lg:flex">Coming soon: MindScape India's Android app. Elevate your learning on the go and make the most of your breaks and commutes. Stay tuned for a seamless mobile education experience</div>
               <a className="goto flex text-sm text-skin-primary200 hover:cursor-pointer hover:no-underline font-bold font-sans">GET THE RELEASE UPDATE</a>
             </div>
             <div className="col2 mx-16">

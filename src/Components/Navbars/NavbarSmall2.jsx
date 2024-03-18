@@ -8,7 +8,6 @@ export default function NavbarSmall2() {
 
     const handleClick = () => {
         settoggleMenu(prev => !prev);
-        // Rotate the menu icon by 180 degrees when clicked
         setRotation(rotation + 180);
     };
     const renderNavItem = (text, link) => (
