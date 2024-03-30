@@ -1,3 +1,6 @@
+![MindScape India logo](https://github.com/riziuzi/Compete/blob/master/public/img/dark.svg)
+
+--------------------------------------------------------------------------------
 # MindScape India
 
 Welcome to [MindScape India](https://compete-j0qb.onrender.com/) , your personalized learning and resource-sharing platform for UPSC aspirants.
