@@ -1,7 +1,8 @@
-![MindScape India logo](https://github.com/riziuzi/Compete/blob/master/public/img/dark.svg)
+<div style="text-align: center;">
+    <img src="https://github.com/riziuzi/Compete/blob/master/public/img/dark.svg" alt="MindScape India logo">
+</div>
 
 --------------------------------------------------------------------------------
-# MindScape India
 
 Welcome to [MindScape India](https://compete-j0qb.onrender.com/) , your personalized learning and resource-sharing platform for UPSC aspirants.
 (Note: the link works, hosted on render with a free plan. It might happen that initial loading of Frontend, and other four servers (will be explained in upcoming documentation) takes some time (spin down after 15 min inactivity), so please be patient)
