@@ -4,8 +4,7 @@
 
 --------------------------------------------------------------------------------
 
-Welcome to MindScape India (deployed [link](https://compete-j0qb.onrender.com/)) , your personalized learning and resource-sharing platform for UPSC aspirants.
-(Note: the link works, hosted on render with a free plan. 
+### Welcome to MindScape India (deployed [link](https://compete-j0qb.onrender.com/)) , your personalized learning and resource-sharing platform for UPSC aspirants.
 
 For now, you can refer to following for understanding the four servers hosted for micro services:
 
