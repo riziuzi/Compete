@@ -9,7 +9,7 @@
 For now, you can refer to following for understanding the four servers hosted for micro services:
 
 1) [Compete_JWT_server](https://github.com/riziuzi/Compete_JWT_server)
-2) [Compete_JWT_server](https://github.com/riziuzi/Compete_User_server)
+2) [Compete_User_server](https://github.com/riziuzi/Compete_User_server)
 3) [Compete_Post_server](https://github.com/riziuzi/Compete_Post_server)
 4) [Compete_Post_Comment_server-](https://github.com/riziuzi/Compete_Post_Comment_server-)
 
